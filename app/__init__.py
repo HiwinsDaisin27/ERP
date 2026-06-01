@@ -1,0 +1,2 @@
+"""TheSecond backend application."""
+
