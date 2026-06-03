@@ -15,6 +15,13 @@ class Settings(BaseSettings):
     telegram_webhook_secret: str | None = Field(None, validation_alias="TELEGRAM_WEBHOOK_SECRET")
     public_webhook_base_url: str | None = Field(None, validation_alias="PUBLIC_WEBHOOK_BASE_URL")
 
+    llm_insertion_provider: str | None = Field(None, validation_alias="LLM_INSERTION_PROVIDER")
+    llm_insertion_api_key: str | None = Field(None, validation_alias="LLM_INSERTION_API_KEY")
+    llm_insertion_model: str | None = Field(None, validation_alias="LLM_INSERTION_MODEL")
+
+    jwt_secret: str | None = Field(None, validation_alias="JWT_SECRET")
+    app_base_url: str | None = Field(None, validation_alias="APP_BASE_URL")
+
     model_config = SettingsConfigDict(env_file=".env", env_file_encoding="utf-8", extra="ignore")
 
     @property

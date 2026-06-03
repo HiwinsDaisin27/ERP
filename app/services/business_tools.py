@@ -100,6 +100,19 @@ class BusinessTools:
     def __init__(self, db: Session) -> None:
         self.db = db
 
+    def call_tool(self, tool_name: str, arguments: dict) -> dict:
+        allowed_tools = {
+            "mark_attendance": self.mark_attendance,
+            "record_material_received": self.record_material_received,
+            "record_material_consumed": self.record_material_consumed,
+            "record_site_expense": self.record_site_expense,
+            "record_progress_update": self.record_progress_update,
+        }
+        tool = allowed_tools.get(tool_name)
+        if tool is None:
+            raise ValueError(f"Unsupported tool: {tool_name}")
+        return tool(**arguments)
+
     def mark_attendance(
         self,
         site_name: str,
@@ -272,4 +285,3 @@ class BusinessTools:
         if value.lower() == "today":
             return date.today()
         return datetime.strptime(value, "%Y-%m-%d").date()
-

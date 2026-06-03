@@ -79,6 +79,14 @@ Telegram should be used for:
 
 Telegram should not be used for payroll, salary edits, payment approvals, or confidential database questions.
 
+Telegram LLM insertion flow:
+
+1. User sends a natural-language field update.
+2. Backend stores it in `telegram_data_submissions`.
+3. OpenRouter extracts one approved backend tool call.
+4. Telegram asks the user to confirm.
+5. After confirmation, the backend executes the tool and writes to PostgreSQL.
+
 The manual guided workflow engine remains in code as a fallback/admin utility, but it is no longer exposed in the Telegram menu.
 
 See [docs/architecture-next-phase.md](docs/architecture-next-phase.md) for the next-phase plan.

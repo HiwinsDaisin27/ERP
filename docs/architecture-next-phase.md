@@ -98,6 +98,15 @@ LLM_INSERTION_API_KEY=
 LLM_INSERTION_MODEL=
 ```
 
+For your current OpenRouter setup:
+
+```env
+LLM_INSERTION_PROVIDER=openrouter
+LLM_INSERTION_MODEL=qwen/qwen3-next-80b-a3b-instruct:free
+```
+
+Put the real API key only in `.env`. If a key is ever pasted into chat or committed, rotate it.
+
 Recommended free-first providers to test:
 
 - Groq for fast tool calling
@@ -110,6 +119,24 @@ For the website:
 ```env
 JWT_SECRET=
 APP_BASE_URL=
+```
+
+`JWT_SECRET` is a private random string used to sign website login sessions. Generate one locally:
+
+```powershell
+python -c "import secrets; print(secrets.token_urlsafe(48))"
+```
+
+`APP_BASE_URL` is the public base URL of the website/backend. During local development use:
+
+```env
+APP_BASE_URL=http://127.0.0.1:8000
+```
+
+After deployment it becomes something like:
+
+```env
+APP_BASE_URL=https://your-domain.com
 ```
 
 For reports/export:

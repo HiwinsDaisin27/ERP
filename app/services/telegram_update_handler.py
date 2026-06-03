@@ -2,6 +2,11 @@ from sqlalchemy import select
 from sqlalchemy.orm import Session
 
 from app.models.telegram import TelegramMessage, TelegramUser
+from app.services.insertion_processor import (
+    InsertionProcessor,
+    confirmation_keyboard,
+    format_extraction_summary,
+)
 from app.services.telegram_client import TelegramClient
 from app.services.telegram_keyboards import (
     intake_examples_text,
@@ -18,6 +23,7 @@ class TelegramUpdateHandler:
         self.telegram = TelegramClient()
         self.workflow_engine = WorkflowEngine(db)
         self.intake = TelegramIntakeService(db)
+        self.insertion_processor = InsertionProcessor(db)
 
     async def handle_update(self, payload: dict) -> None:
         update_id = payload.get("update_id")
@@ -59,9 +65,18 @@ class TelegramUpdateHandler:
             await self.telegram.send_message(chat_id, self._help_text())
         else:
             submission = self.intake.create_pending_submission(chat_id, from_user.get("id"), text)
+            submission = await self.insertion_processor.extract_submission(submission)
+            if submission.status == "AWAITING_CONFIRMATION":
+                await self.telegram.send_message(
+                    chat_id,
+                    format_extraction_summary(submission),
+                    confirmation_keyboard(submission.id),
+                )
+                return
+
             await self.telegram.send_message(
                 chat_id,
-                f"Saved as data submission #{submission.id}. LLM extraction is the next phase, so this is queued and not yet written into business tables.",
+                f"Saved as data submission #{submission.id}, but extraction failed: {submission.error}",
                 main_menu_keyboard(),
             )
 
@@ -100,6 +115,38 @@ class TelegramUpdateHandler:
             await self.telegram.send_message(chat_id, self.workflow_engine.report_daily_site())
         elif data == "report:payroll_weekly":
             await self.telegram.send_message(chat_id, "Payroll is handled only inside the secure website payroll section.")
+        elif data.startswith("submission:confirm:"):
+            submission_id = int(data.rsplit(":", 1)[1])
+            try:
+                submission = self.insertion_processor.confirm_submission(submission_id, chat_id)
+            except ValueError as exc:
+                await self.telegram.send_message(chat_id, str(exc), main_menu_keyboard())
+                return
+
+            if submission.status == "COMPLETED":
+                await self.telegram.send_message(
+                    chat_id,
+                    f"Submission #{submission.id} written successfully.\nResult: {submission.tool_result}",
+                    main_menu_keyboard(),
+                )
+            else:
+                await self.telegram.send_message(
+                    chat_id,
+                    f"Submission #{submission.id} failed during tool execution: {submission.error}",
+                    main_menu_keyboard(),
+                )
+        elif data.startswith("submission:reject:"):
+            submission_id = int(data.rsplit(":", 1)[1])
+            try:
+                submission = self.insertion_processor.reject_submission(submission_id, chat_id)
+            except ValueError as exc:
+                await self.telegram.send_message(chat_id, str(exc), main_menu_keyboard())
+                return
+            await self.telegram.send_message(
+                chat_id,
+                f"Submission #{submission.id} rejected. Nothing was written.",
+                main_menu_keyboard(),
+            )
 
     def _upsert_user(self, from_user: dict, chat_id: int) -> None:
         telegram_user_id = from_user.get("id")
