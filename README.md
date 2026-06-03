@@ -1,92 +1,256 @@
-# TheSecond Backend
 
-Database-centered FastAPI backend for the construction ERP Telegram automation system.
+# Construction ERP & Resource Management System
 
-This first stage intentionally has no LLM integration. Telegram sends updates to the backend, the backend stores users/messages/workflow state in PostgreSQL, and business logic will be added as deterministic API/services.
+## Project Overview
 
-## Setup
+The Construction ERP & Resource Management System is an AI-powered, site-centric enterprise management platform designed for construction contractors to efficiently manage workforce operations, inventory movement, procurement activities, project budgets, and site-level execution from a centralized system.
 
-1. Create a local `.env` file from `.env.example`.
-2. Fill in:
+The platform combines Telegram-based operational workflows, PostgreSQL-backed data management, AI-assisted data extraction through tool-calling agents, and a web-based analytics dashboard to streamline daily construction operations. The system enables supervisors and managers to record attendance, assign workers, manage material transactions, monitor project progress, track budgets, and generate operational reports without relying on traditional paper-based processes.
 
-```env
-DATABASE_URL=postgresql://postgres:<password>@db.kqyjmfqtduboiqcbypyu.supabase.co:5432/postgres
-TELEGRAM_BOT_TOKEN=<your-bot-token>
-TELEGRAM_ADMIN_CHAT_ID=1850995106
-TELEGRAM_WEBHOOK_SECRET=<random-secret>
-PUBLIC_WEBHOOK_BASE_URL=<https-url-after-deploy-or-tunnel>
+The platform is specifically designed for small and medium-scale construction businesses that require a practical and scalable solution for managing multiple sites while maintaining complete visibility over labour, materials, expenses, and project performance.
+
+---
+
+## Objective
+
+To develop a centralized Construction ERP platform that digitizes and automates construction site operations by integrating workforce management, inventory management, procurement tracking, project budgeting, operational reporting, and AI-powered decision support.
+
+The system aims to:
+
+* Digitize daily construction operations.
+* Centralize workforce and inventory records.
+* Track site-wise material consumption and procurement.
+* Automate attendance and payroll-related workflows.
+* Monitor project budgets and expenses.
+* Generate daily, weekly, and monthly operational reports.
+* Provide management with real-time visibility across all active sites.
+* Enable natural language interaction through AI-powered assistants.
+* Build a historical data repository for future analytics and forecasting.
+
+---
+
+## Problem Statement
+
+Small and medium-scale construction contractors frequently manage labour attendance, worker allocation, material procurement, inventory tracking, and project progress through manual registers, spreadsheets, phone calls, and messaging applications.
+
+This approach often leads to:
+
+* Inaccurate attendance records.
+* Poor visibility across multiple construction sites.
+* Untracked material consumption.
+* Inefficient inventory management.
+* Budget overruns.
+* Delayed reporting.
+* Lack of historical operational data.
+* Difficulty in generating actionable business insights.
+
+The absence of a centralized management platform limits operational efficiency and makes data-driven decision-making difficult.
+
+This project addresses these challenges by providing an integrated Construction ERP solution that centralizes operational data, automates business workflows, and enables intelligent reporting through AI-assisted systems.
+
+---
+
+# Key Features
+
+## Workforce Management
+
+* Worker Registration
+* Attendance Tracking
+* Site-wise Worker Allocation
+* Daily Workforce Monitoring
+* Attendance History
+* Payroll Calculation Support
+
+---
+
+## Site Management
+
+* Multi-Site Support
+* Site Creation and Configuration
+* Project Budget Tracking
+* Site Progress Updates
+* Site-wise Reporting
+
+---
+
+## Inventory Management
+
+* Material Master Management
+* Material Procurement Tracking
+* Material Consumption Tracking
+* Inventory Transfer Between Sites
+* Site-wise Inventory Visibility
+* Low Stock Alerts
+* Inventory Analytics
+
+---
+
+## Procurement Management
+
+* Supplier Management
+* Material Purchase Records
+* Material Receipt Tracking
+* Procurement Reports
+* Supplier-wise Purchase History
+
+---
+
+## Expense & Budget Management
+
+* Site Expenses Tracking
+* Budget Monitoring
+* Budget Utilization Analysis
+* Cost Reporting
+* Budget Alert Generation
+
+---
+
+## AI-Powered Operations
+
+* Telegram-Based Data Entry
+* Tool Calling Workflows
+* Natural Language Data Extraction
+* Automated Daily Reports
+* Weekly Operational Summaries
+* Management Insights
+* Construction Knowledge Assistance
+
+---
+
+## Analytics Dashboard
+
+* Workforce Analytics
+* Inventory Analytics
+* Site Performance Analytics
+* Budget Analytics
+* Operational Reports
+* Executive Summary Dashboard
+
+---
+
+# System Architecture
+
+```text
+Telegram Operations Layer
+        │
+        ▼
+AI Tool Calling Agent
+        │
+        ▼
+FastAPI Backend Services
+        │
+        ▼
+PostgreSQL Database
+        │
+        ▼
+Web Dashboard
+        │
+        ▼
+Management Intelligence Assistant
 ```
 
-Do not commit `.env`.
+---
 
-## Run Locally
+# Core Modules
 
-```bash
-python -m venv .venv
-.venv\Scripts\activate
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-```
+## Human Resource Management
 
-Health check:
+* Employee Management
+* Attendance Tracking
+* Site Assignment Tracking
+* Payroll Support
 
-```txt
-http://127.0.0.1:8000/health
-```
+---
 
-## Initialize Database
+## Inventory & Procurement Management
 
-```bash
-python -m app.db.init_db
-```
+* Material Management
+* Inventory Transactions
+* Procurement Records
+* Supplier Management
+* Stock Monitoring
 
-## Telegram Webhook
+---
 
-After the backend has a public HTTPS URL:
+## Project Management
 
-```bash
-python -m app.telegram.set_webhook
-```
+* Site Tracking
+* Budget Monitoring
+* Progress Updates
+* Expense Management
 
-The webhook endpoint is:
+---
 
-```txt
-POST /webhooks/telegram
-```
+## AI Management Assistant
 
-## Current Bot Commands
+* Natural Language Querying
+* Site Analytics
+* Inventory Insights
+* Report Generation
+* Construction Knowledge Assistance
 
-- `/start` opens the main menu
-- `/hr` opens HR operations
-- `/site` opens site/procurement operations
-- `/report` opens reports
-- `/sites` lists site IDs for workflows
-- `/workers` lists worker IDs for workflows
-- `/cancel` cancels the current guided workflow
-- `/help` shows available commands
+---
 
-## Telegram Intake Role
+# Technology Stack
 
-Telegram is now the field intake channel. Users send natural text updates, and the backend stores them in `telegram_data_submissions` for the LLM tool-calling insertion phase.
+### Backend
 
-Telegram should be used for:
+* FastAPI
+* Python
 
-- Attendance updates
-- Material updates
-- Site expenses
-- Progress updates
-- Daily report delivery
+### Database
 
-Telegram should not be used for payroll, salary edits, payment approvals, or confidential database questions.
+* PostgreSQL
 
-Telegram LLM insertion flow:
+### AI Layer
 
-1. User sends a natural-language field update.
-2. Backend stores it in `telegram_data_submissions`.
-3. OpenRouter extracts one approved backend tool call.
-4. Telegram asks the user to confirm.
-5. After confirmation, the backend executes the tool and writes to PostgreSQL.
+* OpenRouter
+* Qwen Models
+* Tool Calling Agents
 
-The manual guided workflow engine remains in code as a fallback/admin utility, but it is no longer exposed in the Telegram menu.
+### Communication Layer
 
-See [docs/architecture-next-phase.md](docs/architecture-next-phase.md) for the next-phase plan.
+* Telegram Bot API
+* Telegram Webhooks
+
+### Frontend
+
+* React / Next.js
+
+### Deployment
+
+* Docker
+* Cloudflare Tunnel (Development)
+* Cloud Hosting (Production)
+
+---
+
+# Future Enhancements
+
+* Predictive Material Forecasting
+* Budget Overrun Prediction
+* Construction Cost Estimation
+* Automated Procurement Recommendations
+* Voice-Based Site Reporting
+* OCR-Based Invoice Processing
+* Multi-Role Access Control
+* Advanced Project Analytics
+* Construction Copilot Assistant
+
+---
+
+# Project Status
+
+Current Phase:
+
+* System Architecture Designed
+* Database Schema Finalized
+* Telegram Integration In Progress
+* AI Tool Calling Workflow Development
+* Dashboard Development Planned
+
+---
+
+## Author
+
+Developed as an AI-powered Construction ERP and Resource Management Platform for construction contractors to digitize workforce operations, inventory management, procurement tracking, and project execution workflows.
