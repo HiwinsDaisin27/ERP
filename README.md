@@ -60,5 +60,25 @@ POST /webhooks/telegram
 - `/hr` opens HR operations
 - `/site` opens site/procurement operations
 - `/report` opens reports
+- `/sites` lists site IDs for workflows
+- `/workers` lists worker IDs for workflows
+- `/cancel` cancels the current guided workflow
 - `/help` shows available commands
 
+## Telegram Intake Role
+
+Telegram is now the field intake channel. Users send natural text updates, and the backend stores them in `telegram_data_submissions` for the LLM tool-calling insertion phase.
+
+Telegram should be used for:
+
+- Attendance updates
+- Material updates
+- Site expenses
+- Progress updates
+- Daily report delivery
+
+Telegram should not be used for payroll, salary edits, payment approvals, or confidential database questions.
+
+The manual guided workflow engine remains in code as a fallback/admin utility, but it is no longer exposed in the Telegram menu.
+
+See [docs/architecture-next-phase.md](docs/architecture-next-phase.md) for the next-phase plan.

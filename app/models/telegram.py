@@ -59,3 +59,19 @@ class TelegramNotificationLog(Base):
     error: Mapped[str | None] = mapped_column(Text)
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
+
+class TelegramDataSubmission(Base):
+    __tablename__ = "telegram_data_submissions"
+
+    id: Mapped[int] = mapped_column(primary_key=True)
+    chat_id: Mapped[int] = mapped_column(BigInteger, nullable=False, index=True)
+    telegram_user_id: Mapped[int | None] = mapped_column(BigInteger, index=True)
+    raw_text: Mapped[str] = mapped_column(Text, nullable=False)
+    status: Mapped[str] = mapped_column(String(30), default="PENDING_LLM")
+    detected_intent: Mapped[str | None] = mapped_column(String(100))
+    extracted_payload: Mapped[dict | None] = mapped_column(JSON)
+    tool_name: Mapped[str | None] = mapped_column(String(100))
+    tool_result: Mapped[dict | None] = mapped_column(JSON)
+    error: Mapped[str | None] = mapped_column(Text)
+    created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
+    processed_at: Mapped[datetime | None] = mapped_column(DateTime(timezone=True))

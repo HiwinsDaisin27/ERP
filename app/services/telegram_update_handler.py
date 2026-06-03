@@ -4,17 +4,20 @@ from sqlalchemy.orm import Session
 from app.models.telegram import TelegramMessage, TelegramUser
 from app.services.telegram_client import TelegramClient
 from app.services.telegram_keyboards import (
-    hr_menu_keyboard,
+    intake_examples_text,
     main_menu_keyboard,
     reports_menu_keyboard,
-    site_menu_keyboard,
 )
+from app.services.telegram_intake import TelegramIntakeService
+from app.services.workflow_engine import WorkflowEngine
 
 
 class TelegramUpdateHandler:
     def __init__(self, db: Session) -> None:
         self.db = db
         self.telegram = TelegramClient()
+        self.workflow_engine = WorkflowEngine(db)
+        self.intake = TelegramIntakeService(db)
 
     async def handle_update(self, payload: dict) -> None:
         update_id = payload.get("update_id")
@@ -39,19 +42,26 @@ class TelegramUpdateHandler:
         command = text.strip().split()[0].lower() if text else ""
 
         if command in {"/start", "start"}:
-            await self.telegram.send_message(chat_id, "Choose an operation:", main_menu_keyboard())
-        elif command == "/hr":
-            await self.telegram.send_message(chat_id, "HR Operations:", hr_menu_keyboard())
-        elif command == "/site":
-            await self.telegram.send_message(chat_id, "Site & Procurement:", site_menu_keyboard())
+            self.workflow_engine.cancel_active(chat_id)
+            self.db.commit()
+            await self.telegram.send_message(chat_id, self._start_text(), main_menu_keyboard())
         elif command == "/report":
+            self.workflow_engine.cancel_active(chat_id)
+            self.db.commit()
             await self.telegram.send_message(chat_id, "Reports:", reports_menu_keyboard())
+        elif command == "/sites":
+            await self.telegram.send_message(chat_id, self.workflow_engine.list_sites())
+        elif command == "/workers":
+            await self.telegram.send_message(chat_id, self.workflow_engine.list_workers())
+        elif command == "/examples":
+            await self.telegram.send_message(chat_id, intake_examples_text())
         elif command == "/help":
             await self.telegram.send_message(chat_id, self._help_text())
         else:
+            submission = self.intake.create_pending_submission(chat_id, from_user.get("id"), text)
             await self.telegram.send_message(
                 chat_id,
-                "I received your message. Use /start to open the operation menu.",
+                f"Saved as data submission #{submission.id}. LLM extraction is the next phase, so this is queued and not yet written into business tables.",
                 main_menu_keyboard(),
             )
 
@@ -69,21 +79,27 @@ class TelegramUpdateHandler:
         self.db.commit()
 
         if data == "menu:main":
-            await self.telegram.send_message(chat_id, "Choose an operation:", main_menu_keyboard())
-        elif data == "menu:hr":
-            await self.telegram.send_message(chat_id, "HR Operations:", hr_menu_keyboard())
-        elif data == "menu:site":
-            await self.telegram.send_message(chat_id, "Site & Procurement:", site_menu_keyboard())
+            self.workflow_engine.cancel_active(chat_id)
+            self.db.commit()
+            await self.telegram.send_message(chat_id, self._start_text(), main_menu_keyboard())
         elif data == "menu:reports":
+            self.workflow_engine.cancel_active(chat_id)
+            self.db.commit()
             await self.telegram.send_message(chat_id, "Reports:", reports_menu_keyboard())
         elif data == "menu:help":
             await self.telegram.send_message(chat_id, self._help_text())
-        elif data.startswith("hr:") or data.startswith("site:") or data.startswith("report:"):
-            await self.telegram.send_message(
-                chat_id,
-                "This workflow is reserved and ready for the next build step. The backend is already logging this action in the database.",
-                main_menu_keyboard(),
-            )
+        elif data == "intake:examples":
+            await self.telegram.send_message(chat_id, intake_examples_text())
+        elif data == "lookup:sites":
+            await self.telegram.send_message(chat_id, self.workflow_engine.list_sites())
+        elif data == "lookup:workers":
+            await self.telegram.send_message(chat_id, self.workflow_engine.list_workers())
+        elif data == "report:attendance_daily":
+            await self.telegram.send_message(chat_id, self.workflow_engine.report_daily_attendance())
+        elif data == "report:site_daily":
+            await self.telegram.send_message(chat_id, self.workflow_engine.report_daily_site())
+        elif data == "report:payroll_weekly":
+            await self.telegram.send_message(chat_id, "Payroll is handled only inside the secure website payroll section.")
 
     def _upsert_user(self, from_user: dict, chat_id: int) -> None:
         telegram_user_id = from_user.get("id")
@@ -128,11 +144,22 @@ class TelegramUpdateHandler:
         return "\n".join(
             [
                 "Available commands:",
-                "/start - Open main menu",
-                "/hr - HR operations",
-                "/site - Site and procurement",
-                "/report - Reports",
+                "/start - Show intake menu",
+                "/examples - Show data entry examples",
+                "/report - Daily reports",
+                "/sites - List site IDs",
+                "/workers - List worker IDs",
                 "/help - Show this help",
+                "",
+                "Send attendance, material, expense, or progress updates as plain text. Payroll is not accepted through Telegram.",
             ]
         )
 
+    def _start_text(self) -> str:
+        return "\n".join(
+            [
+                "Telegram is now the field data intake channel.",
+                "Send attendance, material, expense, or progress updates as plain text.",
+                "Payroll and confidential operations stay inside the secure website.",
+            ]
+        )
