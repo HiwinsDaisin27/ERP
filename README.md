@@ -56,7 +56,7 @@ The Construction ERP & Management Intelligence Platform is designed to centraliz
 
 ---
 
-### Modules list
+## Modules list
 
 * Workforce Management Module
 * Site Management Module
