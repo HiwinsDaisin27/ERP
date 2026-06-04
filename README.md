@@ -50,3 +50,21 @@ This project addresses these challenges by providing an integrated Construction 
 
 ---
 
+## User & Module Identification
+
+The Construction ERP & Management Intelligence Platform is designed to centralize construction operations through multiple interconnected modules. Site Supervisors use the Telegram interface for operational data entry, while Contractors, Project Managers, Accountants, and Administrators access the web platform for monitoring, reporting, payroll management, and business analytics. The system also includes an AI-powered Management Assistant that enables authorized users to retrieve operational insights and reports using natural language queries.
+
+---
+
+### Modules list
+
+* Workforce Management Module
+* Site Management Module
+* Inventory & Procurement Management Module
+* Budget & Expense Management Module
+* Payroll & Accounting Module
+* Dashboard & Analytics Module
+* AI Management Assistant Module
+* Authentication & Access Control Module
+  
+---
