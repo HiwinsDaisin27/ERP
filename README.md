@@ -1,5 +1,5 @@
 
-# Constructino Enterprise Resource Planning System
+# Construction Enterprise Resource Planning System
 
 ## Project Overview
 
