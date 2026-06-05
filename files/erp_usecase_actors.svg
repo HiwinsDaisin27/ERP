@@ -1,0 +1,126 @@
+<svg width="680" viewBox="0 0 680 780" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif, system-ui, sans-serif">
+  <title>Construction ERP Use Case Diagram – Actor Overview</title>
+  <desc>Use case diagram showing three actors (Field Supervisor, Manager, Admin) and their primary use cases across Telegram and Web system boundaries.</desc>
+
+  <!-- Background -->
+  <rect width="680" height="780" fill="#ffffff"/>
+
+  <!-- ─── System boundary: Telegram ─── -->
+  <rect x="140" y="30" width="400" height="320" rx="14" fill="#f8fffe" stroke="#a0aab4" stroke-width="1.2" stroke-dasharray="6 4"/>
+  <text x="340" y="22" text-anchor="middle" font-size="12" fill="#6b7a8d">Telegram Bot (Operational Input Layer)</text>
+
+  <!-- ─── System boundary: Web Platform ─── -->
+  <rect x="140" y="390" width="400" height="310" rx="14" fill="#f8f9ff" stroke="#a0aab4" stroke-width="1.2" stroke-dasharray="6 4"/>
+  <text x="340" y="382" text-anchor="middle" font-size="12" fill="#6b7a8d">Web Platform (Management &amp; Intelligence Layer)</text>
+
+  <!-- ═══ USE CASES – TELEGRAM (Teal) ═══ -->
+  <rect x="162" y="52" width="148" height="40" rx="20" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+  <text x="236" y="72" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="500" fill="#085041">Add worker / site</text>
+
+  <rect x="334" y="52" width="148" height="40" rx="20" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+  <text x="408" y="72" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="500" fill="#085041">Record attendance</text>
+
+  <rect x="162" y="118" width="148" height="40" rx="20" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+  <text x="236" y="138" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="500" fill="#085041">Material receipt</text>
+
+  <rect x="334" y="118" width="148" height="40" rx="20" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+  <text x="408" y="138" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="500" fill="#085041">Material consumption</text>
+
+  <rect x="162" y="184" width="148" height="40" rx="20" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+  <text x="236" y="204" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="500" fill="#085041">Add expense</text>
+
+  <rect x="334" y="184" width="148" height="40" rx="20" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+  <text x="408" y="204" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="500" fill="#085041">Update site progress</text>
+
+  <!-- AI Insertion agent (Purple) -->
+  <rect x="200" y="248" width="280" height="44" rx="22" fill="#eeedfe" stroke="#534ab7" stroke-width="0.8"/>
+  <text x="340" y="264" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="500" fill="#3c3489">Natural language data entry</text>
+  <text x="340" y="282" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#534ab7">LLM insertion agent</text>
+
+  <!-- ═══ USE CASES – WEB (Blue) ═══ -->
+  <rect x="162" y="408" width="148" height="40" rx="20" fill="#e6f1fb" stroke="#185fa5" stroke-width="0.8"/>
+  <text x="236" y="428" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="500" fill="#0c447c">View dashboard</text>
+
+  <rect x="334" y="408" width="148" height="40" rx="20" fill="#e6f1fb" stroke="#185fa5" stroke-width="0.8"/>
+  <text x="408" y="428" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="500" fill="#0c447c">Monitor sites &amp; workforce</text>
+
+  <rect x="162" y="468" width="148" height="40" rx="20" fill="#e6f1fb" stroke="#185fa5" stroke-width="0.8"/>
+  <text x="236" y="488" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="500" fill="#0c447c">Inventory visibility</text>
+
+  <rect x="334" y="468" width="148" height="40" rx="20" fill="#e6f1fb" stroke="#185fa5" stroke-width="0.8"/>
+  <text x="408" y="488" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="500" fill="#0c447c">Budget utilization</text>
+
+  <!-- AI Web assistant (Purple) -->
+  <rect x="200" y="528" width="280" height="44" rx="22" fill="#eeedfe" stroke="#534ab7" stroke-width="0.8"/>
+  <text x="340" y="544" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="500" fill="#3c3489">Ask intelligence assistant</text>
+  <text x="340" y="562" text-anchor="middle" dominant-baseline="central" font-size="11" fill="#534ab7">Natural language analytics</text>
+
+  <!-- Admin use cases (Coral) -->
+  <rect x="162" y="592" width="148" height="40" rx="20" fill="#faece7" stroke="#993c1d" stroke-width="0.8"/>
+  <text x="236" y="612" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="500" fill="#712b13">Manage payroll</text>
+
+  <rect x="334" y="592" width="148" height="40" rx="20" fill="#faece7" stroke="#993c1d" stroke-width="0.8"/>
+  <text x="408" y="612" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="500" fill="#712b13">Configure wages &amp; budgets</text>
+
+  <rect x="248" y="650" width="184" height="40" rx="20" fill="#faece7" stroke="#993c1d" stroke-width="0.8"/>
+  <text x="340" y="670" text-anchor="middle" dominant-baseline="central" font-size="13" font-weight="500" fill="#712b13">View financial reports</text>
+
+  <!-- ═══ ACTORS ═══ -->
+  <!-- Field Supervisor -->
+  <circle cx="62" cy="116" r="16" fill="none" stroke="#6b7a8d" stroke-width="1.4"/>
+  <text x="62" y="112" text-anchor="middle" font-size="14">👷</text>
+  <line x1="62" y1="132" x2="62" y2="170" stroke="#6b7a8d" stroke-width="1.4"/>
+  <line x1="42" y1="148" x2="82" y2="148" stroke="#6b7a8d" stroke-width="1.4"/>
+  <line x1="62" y1="170" x2="44" y2="194" stroke="#6b7a8d" stroke-width="1.4"/>
+  <line x1="62" y1="170" x2="80" y2="194" stroke="#6b7a8d" stroke-width="1.4"/>
+  <text x="62" y="210" text-anchor="middle" font-size="11" fill="#6b7a8d">Field</text>
+  <text x="62" y="224" text-anchor="middle" font-size="11" fill="#6b7a8d">supervisor</text>
+
+  <!-- Manager -->
+  <circle cx="618" cy="470" r="16" fill="none" stroke="#6b7a8d" stroke-width="1.4"/>
+  <text x="618" y="466" text-anchor="middle" font-size="14">📊</text>
+  <line x1="618" y1="486" x2="618" y2="524" stroke="#6b7a8d" stroke-width="1.4"/>
+  <line x1="598" y1="502" x2="638" y2="502" stroke="#6b7a8d" stroke-width="1.4"/>
+  <line x1="618" y1="524" x2="600" y2="548" stroke="#6b7a8d" stroke-width="1.4"/>
+  <line x1="618" y1="524" x2="636" y2="548" stroke="#6b7a8d" stroke-width="1.4"/>
+  <text x="618" y="564" text-anchor="middle" font-size="11" fill="#6b7a8d">Manager</text>
+
+  <!-- Admin -->
+  <circle cx="618" cy="616" r="16" fill="none" stroke="#6b7a8d" stroke-width="1.4"/>
+  <text x="618" y="612" text-anchor="middle" font-size="14">🔐</text>
+  <line x1="618" y1="632" x2="618" y2="670" stroke="#6b7a8d" stroke-width="1.4"/>
+  <line x1="598" y1="648" x2="638" y2="648" stroke="#6b7a8d" stroke-width="1.4"/>
+  <line x1="618" y1="670" x2="600" y2="694" stroke="#6b7a8d" stroke-width="1.4"/>
+  <line x1="618" y1="670" x2="636" y2="694" stroke="#6b7a8d" stroke-width="1.4"/>
+  <text x="618" y="710" text-anchor="middle" font-size="11" fill="#6b7a8d">Admin</text>
+
+  <!-- Association lines: Supervisor → Telegram -->
+  <line x1="78" y1="116" x2="162" y2="72" stroke="#c0c8d0" stroke-width="0.8"/>
+  <line x1="78" y1="130" x2="162" y2="138" stroke="#c0c8d0" stroke-width="0.8"/>
+  <line x1="78" y1="140" x2="162" y2="204" stroke="#c0c8d0" stroke-width="0.8"/>
+  <line x1="78" y1="144" x2="334" y2="72" stroke="#c0c8d0" stroke-width="0.8"/>
+  <line x1="78" y1="148" x2="334" y2="138" stroke="#c0c8d0" stroke-width="0.8"/>
+  <line x1="78" y1="150" x2="334" y2="204" stroke="#c0c8d0" stroke-width="0.8"/>
+
+  <!-- Association lines: Manager → Web -->
+  <line x1="602" y1="462" x2="482" y2="428" stroke="#c0c8d0" stroke-width="0.8"/>
+  <line x1="602" y1="468" x2="482" y2="488" stroke="#c0c8d0" stroke-width="0.8"/>
+  <line x1="602" y1="474" x2="480" y2="550" stroke="#c0c8d0" stroke-width="0.8"/>
+  <line x1="602" y1="460" x2="310" y2="428" stroke="#c0c8d0" stroke-width="0.8"/>
+  <line x1="602" y1="466" x2="310" y2="488" stroke="#c0c8d0" stroke-width="0.8"/>
+
+  <!-- Association lines: Admin → Coral -->
+  <line x1="602" y1="616" x2="482" y2="612" stroke="#c0c8d0" stroke-width="0.8"/>
+  <line x1="602" y1="618" x2="310" y2="612" stroke="#c0c8d0" stroke-width="0.8"/>
+  <line x1="602" y1="622" x2="432" y2="670" stroke="#c0c8d0" stroke-width="0.8"/>
+
+  <!-- Legend -->
+  <rect x="60" y="740" width="12" height="12" rx="3" fill="#e1f5ee" stroke="#0f6e56" stroke-width="0.8"/>
+  <text x="76" y="750" font-size="11" fill="#6b7a8d">Operational (Telegram)</text>
+  <rect x="210" y="740" width="12" height="12" rx="3" fill="#e6f1fb" stroke="#185fa5" stroke-width="0.8"/>
+  <text x="226" y="750" font-size="11" fill="#6b7a8d">Management (Web)</text>
+  <rect x="352" y="740" width="12" height="12" rx="3" fill="#faece7" stroke="#993c1d" stroke-width="0.8"/>
+  <text x="368" y="750" font-size="11" fill="#6b7a8d">Admin only</text>
+  <rect x="452" y="740" width="12" height="12" rx="3" fill="#eeedfe" stroke="#534ab7" stroke-width="0.8"/>
+  <text x="468" y="750" font-size="11" fill="#6b7a8d">AI layer</text>
+</svg>
