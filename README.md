@@ -71,8 +71,8 @@ The Construction ERP & Management Intelligence Platform is designed to centraliz
 
 ## System Use Case Overview
 
-![Actor Use Case Diagram](erp_usecase_actors.svg)
+![Actor Use Case Diagram](files/erp_usecase_actors.svg)
 
 ## Site-Centric Module Breakdown
 
-![Module Breakdown](erp_usecase_modules.svg)
+![Module Breakdown](files/erp_usecase_modules.svg)
