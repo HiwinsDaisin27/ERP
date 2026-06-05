@@ -1,5 +1,5 @@
 
-# Construction ERP & Resource Management System
+# Enterprise Resource Planning System
 
 ## Project Overview
 
