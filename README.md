@@ -76,3 +76,30 @@ The Construction ERP & Management Intelligence Platform is designed to centraliz
 ## Site-Centric Module Breakdown
 
 ![Module Breakdown](files/erp_usecase_modules.svg)
+
+---
+
+## Database Requirement Analysis
+
+The Construction ERP system requires a centralized PostgreSQL database to manage workforce operations, site activities, inventory movement, procurement records, expenses, payroll information, and project progress. The database follows a site-centric architecture where every operational activity is associated with a construction site. It is designed to support real-time data entry through Telegram, secure data management through the web platform, AI-assisted querying, report generation, and historical data analysis for management decision-making.
+
+### Table List
+
+| Table Name            | Description                                                           |
+| --------------------- | --------------------------------------------------------------------- |
+| Users                 | Stores system user accounts and authentication details.               |
+| Roles                 | Stores user roles and access permissions.                             |
+| Sites                 | Stores construction site and project information.                     |
+| Employees             | Stores worker and employee details.                                   |
+| Site_Assignments      | Maps employees to specific construction sites.                        |
+| Attendance            | Stores daily attendance records.                                      |
+| Materials             | Stores material master data.                                          |
+| Suppliers             | Stores supplier and vendor information.                               |
+| Material_Transactions | Tracks procurement, consumption, and inventory movement.              |
+| Expenses              | Stores site-related expenses and operational costs.                   |
+| Progress_Updates      | Stores project progress and daily work updates.                       |
+| Payroll_Periods       | Stores payroll cycle information.                                     |
+| Payroll_Records       | Stores employee wage and payroll details.                             |
+| Payments              | Tracks payroll and payment transactions.                              |
+| Audit_Logs            | Stores system activity and transaction history for auditing purposes. |
+
