@@ -791,6 +791,42 @@ All KPI cards refresh on page load. Alerts are generated server-side based on ru
 
 ---
 
+### Intelligence Assistant
+
+> Route: `/assistant` · Manager and Admin roles
+
+![Intelligence Assistant](files/wireframe_assistant.svg)
+
+The Intelligence Assistant is a fully wired LLM-powered interface that lets management query the entire ERP database in natural language — no SQL, no filters, no manual report building.
+
+**How it works:**
+
+```
+User types query → Backend LLM agent → Tool selection → DB retrieval → Natural language response
+```
+
+The backend uses a tool-calling agent. Based on the query, the LLM decides which tool to invoke — attendance retrieval, inventory lookup, payroll summary, budget comparison — fetches the data, and returns a structured natural language answer. The frontend just sends the query and renders the response.
+
+**What you can ask:**
+
+| Query | What happens under the hood |
+|-------|-----------------------------|
+| *"Give me a daily operations summary for today"* | Pulls attendance + material moves + expenses for all active sites |
+| *"Which site is closest to exceeding its budget?"* | Queries site_budgets vs aggregated expenses + payroll |
+| *"Export attendance for the last 7 days as a spreadsheet"* | Fetches attendance_records, formats as CSV, returns download |
+| *"Compare inventory levels across all sites"* | Aggregates material_receipts - material_consumption per site |
+| *"Summarize the latest payroll period outstanding balance"* | Queries latest payroll_run, sums net_amount - paid |
+
+**UI breakdown:**
+
+- **Preset query chips** — five example prompts covering all ERP domains; clicking auto-fills the input box
+- **Chat history area** — scrollable conversation thread showing user queries, LLM responses, and tool call results
+- **Multi-line textarea** — free-form natural language input, no command syntax required
+- **Ask assistant button** — submits query to the LLM backend endpoint; shows loading state while agent processes
+
+**Access:** Protected behind authentication. Managers and Admins only — field supervisors interact through Telegram, not this interface.
+
+
 ### Payroll Workbook
 
 > Route: `/payroll` · ⚠ Admin role only
@@ -853,3 +889,22 @@ Authentication is JWT-based. Token is issued on login, stored in `httpOnly` cook
 - **Single Axios instance** — base URL from `VITE_API_BASE_URL`, no hardcoded endpoints
 
 ---
+
+## Frontend Environment Setup
+
+### Stack
+
+| Layer | Technology |
+|-------|-----------|
+| Framework | React 18 + Vite |
+| Language | TypeScript |
+| Styling | Tailwind CSS (custom dark theme) |
+| State | Zustand |
+| Data fetching | TanStack Query (React Query) |
+| Routing | React Router v6 |
+| Charts | Recharts |
+| HTTP client | Axios |
+
+---
+
+
