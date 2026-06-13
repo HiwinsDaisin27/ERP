@@ -1,0 +1,111 @@
+<svg width="1100" height="720" viewBox="0 0 1100 720" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif,system-ui,sans-serif">
+  <rect width="1100" height="720" fill="#0d1117"/>
+
+  <!-- Browser chrome -->
+  <rect x="0" y="0" width="1100" height="30" fill="#161b22"/>
+  <rect x="12" y="9" width="12" height="12" rx="6" fill="#f85149"/>
+  <rect x="30" y="9" width="12" height="12" rx="6" fill="#f7941d"/>
+  <rect x="48" y="9" width="12" height="12" rx="6" fill="#3fb950"/>
+  <rect x="100" y="5" width="300" height="20" rx="4" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="250" y="19" text-anchor="middle" font-size="10" fill="#6e7681">http://127.0.0.1:5173/assistant</text>
+
+  <!-- ── SIDEBAR ── -->
+  <rect x="0" y="30" width="220" height="690" fill="#161b22"/>
+  <line x1="220" y1="30" x2="220" y2="720" stroke="#30363d" stroke-width="1"/>
+
+  <rect x="16" y="50" width="36" height="36" rx="8" fill="#f7941d"/>
+  <text x="34" y="72" text-anchor="middle" font-size="13" font-weight="700" fill="#0d1117">TS</text>
+  <text x="62" y="62" font-size="13" font-weight="700" fill="#f0f6fc">TheSecond</text>
+  <text x="62" y="77" font-size="10" fill="#8b949e">Construction ERP</text>
+  <line x1="16" y1="100" x2="204" y2="100" stroke="#30363d" stroke-width="1"/>
+
+  <text x="36" y="135" font-size="13" fill="#8b949e">◯ Dashboard</text>
+
+  <!-- Active: Intelligence Assistant -->
+  <rect x="12" y="148" width="196" height="36" rx="8" fill="#2d2008" stroke="#f7941d" stroke-width="0.5"/>
+  <text x="36" y="171" font-size="13" font-weight="600" fill="#f7941d">● Intelligence Assistant</text>
+
+  <text x="36" y="210" font-size="13" fill="#8b949e">◯ Payroll Workbook</text>
+
+  <!-- User badge -->
+  <rect x="12" y="640" width="196" height="40" rx="8" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="34" y="656" font-size="12" font-weight="600" fill="#f0f6fc">HiwinsDaisin</text>
+  <text x="130" y="656" font-size="10" fill="#f7941d">ADMIN</text>
+  <rect x="14" y="664" width="192" height="1" fill="#30363d"/>
+  <text x="34" y="676" font-size="12" fill="#6e7681">Sign out</text>
+
+  <!-- ── MAIN CONTENT ── -->
+
+  <!-- ── PROMPT SUGGESTIONS CARD ── -->
+  <rect x="240" y="42" width="820" height="258" rx="12" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="268" y="74" font-size="20" font-weight="700" fill="#f0f6fc">Try asking</text>
+
+  <!-- Suggestion chips row 1 -->
+  <rect x="260" y="90" width="296" height="38" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="408" y="113" text-anchor="middle" font-size="12" fill="#c9d1d9">Give me a daily operations summary for today.</text>
+
+  <rect x="570" y="90" width="296" height="38" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="718" y="113" text-anchor="middle" font-size="12" fill="#c9d1d9">Which site is closest to exceeding its budget?</text>
+
+  <!-- Suggestion chips row 2 -->
+  <rect x="260" y="142" width="320" height="38" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="420" y="165" text-anchor="middle" font-size="12" fill="#c9d1d9">Export attendance for the last 7 days as a spreadsheet.</text>
+
+  <rect x="594" y="142" width="272" height="38" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="730" y="165" text-anchor="middle" font-size="12" fill="#c9d1d9">Compare inventory levels across all sites.</text>
+
+  <!-- Suggestion chips row 3 -->
+  <rect x="260" y="194" width="282" height="38" rx="8" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="401" y="217" text-anchor="middle" font-size="12" fill="#c9d1d9">Summarize the latest payroll period outstanding balance.</text>
+
+  <!-- annotation: suggestion chips -->
+  <line x1="1060" y1="155" x2="880" y2="161" stroke="#58a6ff" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="1062" y="148" font-size="10" fill="#58a6ff">Preset query chips —</text>
+  <text x="1062" y="160" font-size="10" fill="#58a6ff">click to auto-fill input</text>
+  <text x="1062" y="172" font-size="10" fill="#58a6ff">covers all ERP domains</text>
+
+  <!-- ── CHAT / INPUT CARD ── -->
+  <rect x="240" y="314" width="820" height="370" rx="12" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Empty state message -->
+  <text x="650" y="370" text-anchor="middle" font-size="13" fill="#6e7681">No messages yet. Ask about sites, attendance, inventory, budget, or payroll.</text>
+
+  <!-- Chat area (empty) -->
+  <rect x="260" y="385" width="780" height="180" rx="8" fill="#161b22" stroke="#30363d" stroke-width="0.5" stroke-dasharray="4 3"/>
+  <text x="650" y="462" text-anchor="middle" font-size="11" fill="#30363d">[ conversation history renders here ]</text>
+  <text x="650" y="480" text-anchor="middle" font-size="11" fill="#30363d">user queries + LLM responses + tool call results</text>
+
+  <!-- Textarea input -->
+  <rect x="260" y="576" width="780" height="72" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="280" y="600" font-size="11" fill="#6e7681" font-family="monospace">Example: Export a weekly attendance spreadsheet and summarize</text>
+  <text x="280" y="618" font-size="11" fill="#6e7681" font-family="monospace">which site had the most absences.</text>
+
+  <!-- Ask assistant button -->
+  <rect x="260" y="658" width="780" height="16" rx="8" fill="#f7941d"/>
+  <text x="650" y="670" text-anchor="middle" font-size="12" font-weight="600" fill="#0d1117">Ask assistant</text>
+
+  <!-- annotation: chat area -->
+  <line x1="240" y1="462" x2="200" y2="420" stroke="#3fb950" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="196" y="408" text-anchor="end" font-size="10" fill="#3fb950">Scrollable chat history</text>
+  <text x="196" y="420" text-anchor="end" font-size="10" fill="#3fb950">renders Q&amp;A + tool outputs</text>
+
+  <!-- annotation: textarea -->
+  <line x1="240" y1="612" x2="200" y2="612" stroke="#8b949e" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="196" y="606" text-anchor="end" font-size="10" fill="#8b949e">Multi-line natural</text>
+  <text x="196" y="618" text-anchor="end" font-size="10" fill="#8b949e">language input</text>
+
+  <!-- annotation: CTA -->
+  <line x1="240" y1="666" x2="200" y2="666" stroke="#f7941d" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="196" y="660" text-anchor="end" font-size="10" fill="#f7941d">Triggers LLM tool-calling</text>
+  <text x="196" y="672" text-anchor="end" font-size="10" fill="#f7941d">agent on backend</text>
+
+  <!-- ── LLM FLOW INDICATOR (top right) ── -->
+  <rect x="780" y="44" width="270" height="90" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="915" y="64" text-anchor="middle" font-size="10" font-weight="600" fill="#8b949e">LLM INTEGRATION FLOW</text>
+  <text x="800" y="82" font-size="10" fill="#6e7681">Query → LLM agent → tool selection</text>
+  <text x="800" y="97" font-size="10" fill="#6e7681">→ DB retrieval → structured response</text>
+  <text x="800" y="112" font-size="10" fill="#3fb950">✓ Fully wired · not mocked</text>
+
+  <!-- Title bar -->
+  <text x="550" y="708" text-anchor="middle" font-size="11" fill="#6e7681">UI WIREFRAME · Intelligence Assistant · /assistant · LLM-powered</text>
+</svg>
