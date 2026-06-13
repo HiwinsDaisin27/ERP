@@ -746,3 +746,84 @@ CREATE INDEX idx_audit_actor ON audit_logs(actor_id);
 
 </details>
 
+---
+
+## UI Wireframe Design
+
+### Login Page
+
+> Route: `/login` · Accessible to all roles before authentication
+
+![Login Wireframe](files/wireframe_login.svg)
+
+**Layout decisions:**
+- Centered card on a dark background — no distractions for a management console
+- Brand pill (`TS` in amber) establishes identity immediately
+- Explanatory subtext clarifies the separation between Telegram (field) and Web (admin) — critical because the same contractor may use both
+- Dev-mode credential hint box is shown only during development (`import.meta.env.DEV`)
+- Email input has blue focus ring — distinguishes from the amber accent used on CTAs
+- Single amber CTA button — `Sign in` — no secondary actions on this page
+
+**Interaction states:**
+- Email field: blue border on focus (`#58a6ff`)
+- Password field: default border on focus
+- Sign in button: amber on default, slight darken on hover, loading spinner on submit
+- Error state: red inline message below the password field, no page reload
+
+---
+
+### Operations Dashboard
+
+> Route: `/` · Manager and Admin roles
+
+![Dashboard Wireframe](files/wireframe_dashboard.svg)
+
+**Layout decisions:**
+- Fixed sidebar (220px) with role-aware navigation — active item gets amber highlight + amber left border
+- Top KPI strip: 5 metric cards in a responsive row — Active sites, Workers today, Attendance, Material moves, Expenses today
+- Open payroll periods card is shown only when count > 0 in production (shown as `0` here indicating no pending runs)
+- **Site overview** (left, ~60% width): one expandable card per active site — shows worker count, progress update count, budget utilisation bar
+- **Alerts panel** (right, ~40% width): auto-generated smart alerts for low stock, missing attendance, budget threshold breaches
+- Budget bar: thin progress bar inside each site card — amber fill against grey track
+
+**Data freshness:**  
+All KPI cards refresh on page load. Alerts are generated server-side based on rule engine (stock < threshold, no attendance by 10am, budget > 80%).
+
+---
+
+### Payroll Workbook
+
+> Route: `/payroll` · ⚠ Admin role only
+
+![Payroll Wireframe](files/wireframe_payroll.svg)
+
+**Layout decisions:**
+- Period selector dropdown at the top — shows run ID, date range, and status (DRAFT / FINALIZED / PAID)
+- Date range picker + period type dropdown (Week / Fortnight / Month) + `New period` amber button
+- Four summary cards below the period controls: Total gross, Total paid, Outstanding, Worker count
+- Editable ledger table: one row per worker with columns for Present, Half, Absent, Rate/day, OT hrs, Advances, Deductions, Gross, Paid, Balance, Source
+- `Src` column shows `AUTO` (synced from attendance) or `MANUAL` (admin overridden)
+- Status bar at bottom: immutable finalization metadata
+- Finalized runs are read-only — all input cells are disabled when `status = finalised`
+
+**Access control note:**  
+This route returns `403 Forbidden` for supervisor and manager roles. The sidebar item is not rendered for non-admin users.
+
+---
+
+### Navigation & Role Flow
+
+![Navigation Flow](files/wireframe_nav_flow.svg)
+
+**Role matrix:**
+
+| Route | Supervisor | Manager | Admin |
+|-------|-----------|---------|-------|
+| Telegram bot | ✅ Primary | ❌ | ❌ |
+| `/login` | ✅ | ✅ | ✅ |
+| `/` Dashboard | ❌ | ✅ | ✅ |
+| `/assistant` | ❌ | ✅ | ✅ |
+| `/sites/:id` | ❌ | ✅ | ✅ |
+| `/payroll` | ❌ | ❌ | ✅ |
+
+Authentication is JWT-based. Token is issued on login, stored in `httpOnly` cookie, and verified on every API request. Route-level guards on the frontend redirect unauthorized access back to `/login`.
