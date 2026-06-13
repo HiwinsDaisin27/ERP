@@ -105,7 +105,13 @@ The Construction ERP system requires a centralized PostgreSQL database to manage
 
 ---
 
-## Database Schema
+## ER Diagram Design
+
+![](files/er_diagram.svg)
+
+---
+
+## Database Schema Design
 
 
 > Rendered natively by GitHub via Mermaid. No plugins needed.
