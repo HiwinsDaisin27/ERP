@@ -1,0 +1,74 @@
+<svg width="900" height="620" viewBox="0 0 900 620" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif,system-ui,sans-serif">
+  <rect width="900" height="620" fill="#0d1117"/>
+
+  <!-- Browser chrome -->
+  <rect x="0" y="0" width="900" height="32" fill="#161b22"/>
+  <rect x="12" y="10" width="12" height="12" rx="6" fill="#f85149"/>
+  <rect x="30" y="10" width="12" height="12" rx="6" fill="#f7941d"/>
+  <rect x="48" y="10" width="12" height="12" rx="6" fill="#3fb950"/>
+  <rect x="100" y="6" width="340" height="20" rx="4" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="270" y="20" text-anchor="middle" font-size="10" fill="#6e7681">http://127.0.0.1:5173/login</text>
+
+  <!-- Card -->
+  <rect x="250" y="60" width="400" height="530" rx="16" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Logo pill -->
+  <rect x="278" y="88" width="44" height="44" rx="10" fill="#f7941d"/>
+  <text x="300" y="115" text-anchor="middle" font-size="15" font-weight="700" fill="#0d1117">TS</text>
+  <!-- Brand name -->
+  <text x="332" y="105" font-size="15" font-weight="700" fill="#f0f6fc">TheSecond</text>
+  <text x="432" y="105" font-size="15" fill="#8b949e">Management Console</text>
+  <text x="332" y="122" font-size="11" fill="#6e7681">Construction ERP Platform</text>
+
+  <!-- Divider -->
+  <line x1="278" y1="145" x2="622" y2="145" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Subtext -->
+  <text x="278" y="168" font-size="12" fill="#8b949e">Sign in with your website admin account. This is</text>
+  <text x="278" y="184" font-size="12" fill="#8b949e">separate from Telegram — field staff use the bot,</text>
+  <text x="278" y="200" font-size="12" fill="#8b949e">you use this console for dashboard and payroll.</text>
+
+  <!-- Info box -->
+  <rect x="278" y="218" width="344" height="100" rx="8" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="296" y="240" font-size="12" font-weight="600" fill="#f0f6fc">Your admin login</text>
+  <text x="296" y="260" font-size="11" fill="#8b949e">Email: </text>
+  <text x="330" y="260" font-size="11" fill="#f7941d" font-family="monospace">admin@example.com</text>
+  <text x="296" y="278" font-size="11" fill="#8b949e">Password: </text>
+  <text x="344" y="278" font-size="11" fill="#f7941d" font-family="monospace">admin12345</text>
+  <text x="296" y="302" font-size="10" fill="#6e7681">To set your own credentials, run in terminal:</text>
+  <text x="296" y="315" font-size="10" fill="#f7941d" font-family="monospace">python -m app.db.manage_admin --email ...</text>
+
+  <!-- Email label + input -->
+  <text x="278" y="344" font-size="12" fill="#c9d1d9">Email</text>
+  <rect x="278" y="352" width="344" height="40" rx="8" fill="#0d1117" stroke="#58a6ff" stroke-width="1.5"/>
+  <text x="294" y="376" font-size="12" fill="#6e7681">admin@example.com</text>
+  <!-- cursor blink indicator -->
+  <rect x="290" y="362" width="2" height="16" fill="#58a6ff"/>
+
+  <!-- Password label + input -->
+  <text x="278" y="412" font-size="12" fill="#c9d1d9">Password</text>
+  <rect x="278" y="420" width="344" height="40" rx="8" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="294" y="444" font-size="14" fill="#6e7681">••••••••••••</text>
+
+  <!-- Sign in button -->
+  <rect x="278" y="476" width="344" height="46" rx="10" fill="#f7941d"/>
+  <text x="450" y="503" text-anchor="middle" font-size="15" font-weight="600" fill="#0d1117">Sign in</text>
+
+  <!-- annotation arrows -->
+  <!-- Logo annotation -->
+  <line x1="650" y1="110" x2="626" y2="110" stroke="#f7941d" stroke-width="1" stroke-dasharray="4 2" marker-end="url(#a)"/>
+  <text x="655" y="108" font-size="11" fill="#f7941d">Brand + role pill</text>
+  <!-- Info box annotation -->
+  <line x1="650" y1="268" x2="622" y2="268" stroke="#8b949e" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="655" y="266" font-size="11" fill="#8b949e">Dev credentials hint</text>
+  <text x="655" y="280" font-size="10" fill="#6e7681">(shown only in dev mode)</text>
+  <!-- Input annotation -->
+  <line x1="650" y1="372" x2="622" y2="372" stroke="#58a6ff" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="655" y="370" font-size="11" fill="#58a6ff">Active focus state</text>
+  <!-- Button annotation -->
+  <line x1="650" y1="499" x2="622" y2="499" stroke="#f7941d" stroke-width="1" stroke-dasharray="4 2"/>
+  <text x="655" y="497" font-size="11" fill="#f7941d">Primary CTA — amber</text>
+
+  <!-- Title bar -->
+  <text x="450" y="590" text-anchor="middle" font-size="11" fill="#6e7681">UI WIREFRAME · Login Page · /login</text>
+</svg>

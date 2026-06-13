@@ -1,0 +1,147 @@
+<svg width="1100" height="720" viewBox="0 0 1100 720" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif,system-ui,sans-serif">
+  <rect width="1100" height="720" fill="#0d1117"/>
+
+  <!-- Browser chrome -->
+  <rect x="0" y="0" width="1100" height="30" fill="#161b22"/>
+  <rect x="12" y="9" width="12" height="12" rx="6" fill="#f85149"/>
+  <rect x="30" y="9" width="12" height="12" rx="6" fill="#f7941d"/>
+  <rect x="48" y="9" width="12" height="12" rx="6" fill="#3fb950"/>
+  <rect x="100" y="5" width="260" height="20" rx="4" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="230" y="19" text-anchor="middle" font-size="10" fill="#6e7681">http://127.0.0.1:5173</text>
+
+  <!-- ── SIDEBAR ── -->
+  <rect x="0" y="30" width="220" height="690" fill="#161b22" stroke="#30363d" stroke-width="0"/>
+  <line x1="220" y1="30" x2="220" y2="720" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Sidebar logo -->
+  <rect x="16" y="50" width="36" height="36" rx="8" fill="#f7941d"/>
+  <text x="34" y="72" text-anchor="middle" font-size="13" font-weight="700" fill="#0d1117">TS</text>
+  <text x="62" y="62" font-size="13" font-weight="700" fill="#f0f6fc">TheSecond</text>
+  <text x="62" y="77" font-size="10" fill="#8b949e">Construction ERP</text>
+
+  <line x1="16" y1="100" x2="204" y2="100" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Nav items -->
+  <rect x="12" y="110" width="196" height="36" rx="8" fill="#2d2008" stroke="#f7941d" stroke-width="0.5"/>
+  <text x="36" y="132" font-size="13" font-weight="600" fill="#f7941d">● Dashboard</text>
+
+  <text x="36" y="172" font-size="13" fill="#8b949e">◯ Intelligence Assistant</text>
+  <text x="36" y="210" font-size="13" fill="#8b949e">◯ Payroll Workbook</text>
+
+  <!-- Sidebar annotation -->
+  <line x1="220" y1="160" x2="260" y2="160" stroke="#8b949e" stroke-width="1" stroke-dasharray="3 2"/>
+
+  <!-- User badge at bottom -->
+  <rect x="12" y="640" width="196" height="40" rx="8" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="34" y="656" font-size="12" font-weight="600" fill="#f0f6fc">HiwinsDaisin</text>
+  <text x="115" y="656" font-size="10" fill="#f7941d">ADMIN</text>
+  <rect x="14" y="664" width="192" height="1" fill="#30363d"/>
+  <text x="34" y="676" font-size="12" fill="#6e7681">Sign out</text>
+
+  <!-- ── MAIN CONTENT ── -->
+  <!-- Header -->
+  <text x="250" y="72" font-size="22" font-weight="700" fill="#f0f6fc">Operations Dashboard</text>
+  <text x="250" y="92" font-size="13" fill="#8b949e">Site-centric visibility across workforce, inventory, and spend.</text>
+
+  <line x1="240" y1="105" x2="1090" y2="105" stroke="#30363d" stroke-width="1"/>
+
+  <!-- ── STAT CARDS ROW 1 ── -->
+  <!-- Active Sites -->
+  <rect x="250" y="118" width="154" height="72" rx="10" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="268" y="142" font-size="11" fill="#8b949e">Active sites</text>
+  <text x="268" y="172" font-size="28" font-weight="600" fill="#f0f6fc">2</text>
+
+  <!-- Workers today -->
+  <rect x="418" y="118" width="154" height="72" rx="10" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="436" y="142" font-size="11" fill="#8b949e">Workers today</text>
+  <text x="436" y="172" font-size="28" font-weight="600" fill="#f0f6fc">0</text>
+
+  <!-- Attendance -->
+  <rect x="586" y="118" width="154" height="72" rx="10" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="604" y="142" font-size="11" fill="#8b949e">Attendance today</text>
+  <text x="604" y="172" font-size="28" font-weight="600" fill="#f0f6fc">0</text>
+
+  <!-- Material moves -->
+  <rect x="754" y="118" width="154" height="72" rx="10" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="772" y="142" font-size="11" fill="#8b949e">Material moves</text>
+  <text x="772" y="172" font-size="28" font-weight="600" fill="#f0f6fc">0</text>
+
+  <!-- Expenses today -->
+  <rect x="922" y="118" width="154" height="72" rx="10" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="940" y="142" font-size="11" fill="#8b949e">Expenses today</text>
+  <text x="940" y="172" font-size="28" font-weight="600" fill="#f0f6fc">₹0</text>
+
+  <!-- Row 2: Open payroll -->
+  <rect x="250" y="202" width="154" height="72" rx="10" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="268" y="226" font-size="11" fill="#8b949e">Open payroll periods</text>
+  <text x="268" y="256" font-size="28" font-weight="600" fill="#f0f6fc">0</text>
+
+  <!-- Stat card annotation -->
+  <line x1="1090" y1="154" x2="1082" y2="154" stroke="#f7941d" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="1085" y="152" text-anchor="end" font-size="10" fill="#f7941d">KPI cards — live counts</text>
+
+  <!-- ── SITE OVERVIEW ── -->
+  <rect x="250" y="288" width="536" height="280" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="270" y="316" font-size="16" font-weight="600" fill="#f0f6fc">Site overview</text>
+
+  <!-- Site card 1 -->
+  <rect x="266" y="328" width="504" height="88" rx="8" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="284" y="352" font-size="14" font-weight="600" fill="#f0f6fc">Gandhi nagar</text>
+  <rect x="370" y="340" width="56" height="20" rx="10" fill="#1a3a2a"/>
+  <text x="398" y="354" text-anchor="middle" font-size="10" font-weight="600" fill="#3fb950">ACTIVE</text>
+  <text x="284" y="376" font-size="12" fill="#8b949e">0 workers today   ·   1 progress update</text>
+  <text x="284" y="400" font-size="11" fill="#8b949e">Budget: </text>
+  <!-- progress bar -->
+  <rect x="284" y="406" width="468" height="6" rx="3" fill="#30363d"/>
+  <rect x="284" y="406" width="4" height="6" rx="3" fill="#f7941d"/>
+  <text x="756" y="400" text-anchor="end" font-size="11" fill="#8b949e">₹0 / ₹25,00,000 (0%)</text>
+
+  <!-- Site card 2 -->
+  <rect x="266" y="428" width="504" height="88" rx="8" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="284" y="452" font-size="14" font-weight="600" fill="#f0f6fc">Nehru nagar</text>
+  <rect x="366" y="440" width="56" height="20" rx="10" fill="#1a3a2a"/>
+  <text x="394" y="454" text-anchor="middle" font-size="10" font-weight="600" fill="#3fb950">ACTIVE</text>
+  <text x="284" y="476" font-size="12" fill="#8b949e">0 workers today   ·   0 progress updates</text>
+  <rect x="284" y="506" width="468" height="6" rx="3" fill="#30363d"/>
+  <rect x="284" y="506" width="4" height="6" rx="3" fill="#f7941d"/>
+  <text x="756" y="500" text-anchor="end" font-size="11" fill="#8b949e">₹0 / ₹20,00,000 (0%)</text>
+
+  <!-- Site overview annotation -->
+  <line x1="250" y1="370" x2="232" y2="370" stroke="#3fb950" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="228" y="368" text-anchor="end" font-size="10" fill="#3fb950">Per-site card</text>
+  <line x1="250" y1="412" x2="232" y2="412" stroke="#f7941d" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="228" y="410" text-anchor="end" font-size="10" fill="#f7941d">Budget bar</text>
+
+  <!-- ── ALERTS PANEL ── -->
+  <rect x="800" y="288" width="276" height="280" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+  <text x="820" y="316" font-size="16" font-weight="600" fill="#f0f6fc">Alerts</text>
+
+  <!-- Alert items -->
+  <rect x="816" y="328" width="244" height="44" rx="6" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="834" y="344" font-size="11" fill="#f7941d">⚠</text>
+  <text x="852" y="344" font-size="11" fill="#c9d1d9">cement is low at</text>
+  <text x="852" y="360" font-size="11" fill="#c9d1d9">Gandhi nagar (5,000 bags)</text>
+
+  <rect x="816" y="380" width="244" height="44" rx="6" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="834" y="396" font-size="11" fill="#f7941d">⚠</text>
+  <text x="852" y="396" font-size="11" fill="#c9d1d9">cement is low at</text>
+  <text x="852" y="412" font-size="11" fill="#c9d1d9">Nehru nagar (5,000 bags)</text>
+
+  <rect x="816" y="432" width="244" height="44" rx="6" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="834" y="448" font-size="11" fill="#6e7681">ℹ</text>
+  <text x="852" y="448" font-size="11" fill="#c9d1d9">No attendance recorded</text>
+  <text x="852" y="464" font-size="11" fill="#c9d1d9">today for Gandhi nagar</text>
+
+  <rect x="816" y="484" width="244" height="44" rx="6" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="834" y="500" font-size="11" fill="#6e7681">ℹ</text>
+  <text x="852" y="500" font-size="11" fill="#c9d1d9">No attendance recorded</text>
+  <text x="852" y="516" font-size="11" fill="#c9d1d9">today for Nehru nagar</text>
+
+  <!-- Alerts annotation -->
+  <line x1="1076" y1="352" x2="1090" y2="352" stroke="#f85149" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="1092" y="350" font-size="10" fill="#f85149">Auto-generated</text>
+  <text x="1092" y="362" font-size="10" fill="#f85149">operational alerts</text>
+
+  <!-- Title bar -->
+  <text x="550" y="700" text-anchor="middle" font-size="11" fill="#6e7681">UI WIREFRAME · Operations Dashboard · / (root)</text>
+</svg>

@@ -1,0 +1,162 @@
+<svg width="1100" height="720" viewBox="0 0 1100 720" xmlns="http://www.w3.org/2000/svg" font-family="ui-sans-serif,system-ui,sans-serif">
+  <rect width="1100" height="720" fill="#0d1117"/>
+
+  <!-- Browser chrome -->
+  <rect x="0" y="0" width="1100" height="30" fill="#161b22"/>
+  <rect x="12" y="9" width="12" height="12" rx="6" fill="#f85149"/>
+  <rect x="30" y="9" width="12" height="12" rx="6" fill="#f7941d"/>
+  <rect x="48" y="9" width="12" height="12" rx="6" fill="#3fb950"/>
+  <rect x="100" y="5" width="280" height="20" rx="4" fill="#0d1117" stroke="#30363d" stroke-width="1"/>
+  <text x="240" y="19" text-anchor="middle" font-size="10" fill="#6e7681">http://127.0.0.1:5173/payroll</text>
+
+  <!-- ── SIDEBAR ── -->
+  <rect x="0" y="30" width="220" height="690" fill="#161b22"/>
+  <line x1="220" y1="30" x2="220" y2="720" stroke="#30363d" stroke-width="1"/>
+  <rect x="16" y="50" width="36" height="36" rx="8" fill="#f7941d"/>
+  <text x="34" y="72" text-anchor="middle" font-size="13" font-weight="700" fill="#0d1117">TS</text>
+  <text x="62" y="62" font-size="13" font-weight="700" fill="#f0f6fc">TheSecond</text>
+  <text x="62" y="77" font-size="10" fill="#8b949e">Construction ERP</text>
+  <line x1="16" y1="100" x2="204" y2="100" stroke="#30363d" stroke-width="1"/>
+  <text x="36" y="135" font-size="13" fill="#8b949e">◯ Dashboard</text>
+  <text x="36" y="173" font-size="13" fill="#8b949e">◯ Intelligence Assistant</text>
+  <rect x="12" y="185" width="196" height="36" rx="8" fill="#2d2008" stroke="#f7941d" stroke-width="0.5"/>
+  <text x="36" y="208" font-size="13" font-weight="600" fill="#f7941d">● Payroll Workbook</text>
+  <rect x="12" y="640" width="196" height="40" rx="8" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="34" y="656" font-size="12" font-weight="600" fill="#f0f6fc">HiwinsDaisin</text>
+  <text x="115" y="656" font-size="10" fill="#f85149">ADMIN</text>
+  <rect x="14" y="664" width="192" height="1" fill="#30363d"/>
+  <text x="34" y="676" font-size="12" fill="#6e7681">Sign out</text>
+
+  <!-- ── MAIN CONTENT ── -->
+  <text x="250" y="72" font-size="22" font-weight="700" fill="#f0f6fc">Payroll Workbook</text>
+  <text x="250" y="92" font-size="13" fill="#8b949e">Editable worker ledger with attendance sync, payments, and period finalization.</text>
+  <line x1="240" y1="105" x2="1090" y2="105" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Period selector row -->
+  <rect x="250" y="118" width="460" height="36" rx="8" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="268" y="140" font-size="11" fill="#8b949e">Period</text>
+  <text x="318" y="140" font-size="12" fill="#f0f6fc">#4  2026-06-04 → 2026-06-10  (FINALIZED)</text>
+  <text x="698" y="140" font-size="14" fill="#8b949e">▼</text>
+
+  <!-- Date range controls -->
+  <rect x="250" y="166" width="120" height="36" rx="8" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="270" y="188" font-size="12" fill="#f0f6fc">Week  ▼</text>
+
+  <rect x="382" y="166" width="160" height="36" rx="8" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="462" y="188" text-anchor="middle" font-size="12" fill="#f0f6fc">07/06/2026  🗓</text>
+
+  <rect x="554" y="166" width="160" height="36" rx="8" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="634" y="188" text-anchor="middle" font-size="12" fill="#f0f6fc">13/06/2026  🗓</text>
+
+  <!-- New period button -->
+  <rect x="728" y="166" width="120" height="36" rx="8" fill="#f7941d"/>
+  <text x="788" y="188" text-anchor="middle" font-size="13" font-weight="600" fill="#0d1117">New period</text>
+
+  <!-- Period controls annotation -->
+  <line x1="848" y1="184" x2="880" y2="184" stroke="#f7941d" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="884" y="182" font-size="10" fill="#f7941d">Create new payroll run</text>
+
+  <!-- Stat cards -->
+  <rect x="250" y="218" width="196" height="76" rx="10" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="270" y="242" font-size="11" fill="#8b949e">Total gross</text>
+  <text x="270" y="278" font-size="24" font-weight="600" fill="#f0f6fc">₹0.00</text>
+
+  <rect x="460" y="218" width="196" height="76" rx="10" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="480" y="242" font-size="11" fill="#8b949e">Total paid</text>
+  <text x="480" y="278" font-size="24" font-weight="600" fill="#f0f6fc">₹0.00</text>
+
+  <rect x="670" y="218" width="196" height="76" rx="10" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="690" y="242" font-size="11" fill="#8b949e">Outstanding</text>
+  <text x="690" y="278" font-size="24" font-weight="600" fill="#f0f6fc">₹0.00</text>
+
+  <rect x="880" y="218" width="196" height="76" rx="10" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="900" y="242" font-size="11" fill="#8b949e">Workers</text>
+  <text x="900" y="278" font-size="24" font-weight="600" fill="#f0f6fc">3</text>
+
+  <!-- ── PAYROLL TABLE ── -->
+  <rect x="250" y="310" width="826" height="300" rx="12" fill="#161b22" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Table header -->
+  <rect x="250" y="310" width="826" height="36" rx="12" fill="#1c2128"/>
+  <rect x="250" y="328" width="826" height="18" fill="#1c2128"/>
+  <!-- header cols -->
+  <text x="268" y="332" font-size="11" font-weight="600" fill="#8b949e">Worker</text>
+  <text x="380" y="332" font-size="11" font-weight="600" fill="#8b949e">Present</text>
+  <text x="450" y="332" font-size="11" font-weight="600" fill="#8b949e">Half</text>
+  <text x="510" y="332" font-size="11" font-weight="600" fill="#8b949e">Absent</text>
+  <text x="580" y="332" font-size="11" font-weight="600" fill="#8b949e">Rate/day</text>
+  <text x="650" y="332" font-size="11" font-weight="600" fill="#8b949e">OT hrs</text>
+  <text x="710" y="332" font-size="11" font-weight="600" fill="#8b949e">Advances</text>
+  <text x="780" y="332" font-size="11" font-weight="600" fill="#8b949e">Deductions</text>
+  <text x="860" y="332" font-size="11" font-weight="600" fill="#8b949e">Gross</text>
+  <text x="910" y="332" font-size="11" font-weight="600" fill="#8b949e">Paid</text>
+  <text x="960" y="332" font-size="11" font-weight="600" fill="#8b949e">Bal</text>
+  <text x="1008" y="332" font-size="11" font-weight="600" fill="#8b949e">Src</text>
+
+  <!-- Divider -->
+  <line x1="250" y1="348" x2="1076" y2="348" stroke="#30363d" stroke-width="1"/>
+
+  <!-- Row 1 -->
+  <text x="268" y="372" font-size="12" fill="#f0f6fc">dharun</text>
+  <text x="392" y="372" font-size="12" fill="#c9d1d9">0.00</text>
+  <text x="458" y="372" font-size="12" fill="#c9d1d9">0.00</text>
+  <text x="520" y="372" font-size="12" fill="#c9d1d9">0.00</text>
+  <text x="590" y="372" font-size="12" fill="#c9d1d9">455.00</text>
+  <text x="656" y="372" font-size="12" fill="#c9d1d9">0.00</text>
+  <text x="722" y="372" font-size="12" fill="#c9d1d9">0.00</text>
+  <text x="798" y="372" font-size="12" fill="#c9d1d9">0.00</text>
+  <text x="862" y="372" font-size="12" fill="#c9d1d9">₹0.00</text>
+  <text x="912" y="372" font-size="12" fill="#c9d1d9">₹0.00</text>
+  <text x="962" y="372" font-size="12" fill="#c9d1d9">₹0.00</text>
+  <rect x="1000" y="360" width="46" height="20" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="1023" y="374" text-anchor="middle" font-size="10" fill="#8b949e">AUTO</text>
+  <line x1="250" y1="384" x2="1076" y2="384" stroke="#30363d" stroke-width="0.5"/>
+
+  <!-- Row 2 -->
+  <text x="268" y="408" font-size="12" fill="#f0f6fc">Karthik</text>
+  <text x="392" y="408" font-size="12" fill="#c9d1d9">0.00</text>
+  <text x="458" y="408" font-size="12" fill="#c9d1d9">0.00</text>
+  <text x="520" y="408" font-size="12" fill="#c9d1d9">0.00</text>
+  <text x="590" y="408" font-size="12" fill="#c9d1d9">500.00</text>
+  <text x="656" y="408" font-size="12" fill="#c9d1d9">0.00</text>
+  <text x="722" y="408" font-size="12" fill="#c9d1d9">0.00</text>
+  <text x="798" y="408" font-size="12" fill="#c9d1d9">0.00</text>
+  <text x="862" y="408" font-size="12" fill="#c9d1d9">₹0.00</text>
+  <text x="912" y="408" font-size="12" fill="#c9d1d9">₹0.00</text>
+  <text x="962" y="408" font-size="12" fill="#c9d1d9">₹0.00</text>
+  <rect x="1000" y="396" width="46" height="20" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="1023" y="410" text-anchor="middle" font-size="10" fill="#8b949e">AUTO</text>
+  <line x1="250" y1="420" x2="1076" y2="420" stroke="#30363d" stroke-width="0.5"/>
+
+  <!-- Row 3 -->
+  <text x="268" y="444" font-size="12" fill="#f0f6fc">kavin kumar</text>
+  <text x="392" y="444" font-size="12" fill="#c9d1d9">0.00</text>
+  <text x="458" y="444" font-size="12" fill="#c9d1d9">0.00</text>
+  <text x="520" y="444" font-size="12" fill="#c9d1d9">0.00</text>
+  <text x="590" y="444" font-size="12" fill="#c9d1d9">400.00</text>
+  <text x="656" y="444" font-size="12" fill="#c9d1d9">0.00</text>
+  <text x="722" y="444" font-size="12" fill="#c9d1d9">0.00</text>
+  <text x="798" y="444" font-size="12" fill="#c9d1d9">0.00</text>
+  <text x="862" y="444" font-size="12" fill="#c9d1d9">₹0.00</text>
+  <text x="912" y="444" font-size="12" fill="#c9d1d9">₹0.00</text>
+  <text x="962" y="444" font-size="12" fill="#c9d1d9">₹0.00</text>
+  <rect x="1000" y="432" width="46" height="20" rx="4" fill="#1c2128" stroke="#30363d" stroke-width="1"/>
+  <text x="1023" y="446" text-anchor="middle" font-size="10" fill="#8b949e">AUTO</text>
+
+  <!-- Status bar -->
+  <line x1="250" y1="568" x2="1076" y2="568" stroke="#30363d" stroke-width="1"/>
+  <text x="268" y="586" font-size="11" fill="#6e7681">Status: FINALIZED · Finalized 6/10/2026, 11:00:34 PM · Created through 2026-06-13</text>
+
+  <!-- Admin badge annotation -->
+  <line x1="250" y1="310" x2="232" y2="280" stroke="#f85149" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="228" y="278" text-anchor="end" font-size="10" fill="#f85149">Admin-only module</text>
+  <text x="228" y="290" text-anchor="end" font-size="10" fill="#f85149">No Telegram access</text>
+
+  <!-- Table annotation -->
+  <line x1="1076" y1="406" x2="1090" y2="406" stroke="#8b949e" stroke-width="1" stroke-dasharray="3 2"/>
+  <text x="1092" y="400" font-size="10" fill="#8b949e">Editable ledger</text>
+  <text x="1092" y="412" font-size="10" fill="#8b949e">synced from attendance</text>
+
+  <!-- Title bar -->
+  <text x="550" y="700" text-anchor="middle" font-size="11" fill="#6e7681">UI WIREFRAME · Payroll Workbook · /payroll  ⚠ Admin only</text>
+</svg>
