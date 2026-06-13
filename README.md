@@ -105,9 +105,29 @@ The Construction ERP system requires a centralized PostgreSQL database to manage
 
 ---
 
-## ER Diagram Design
+## ER Diagram
 
-![](files/er_diagram.svg)
+Classic Chen notation — rectangles are entities, diamonds are relationships, ovals are attributes.
+
+![ER Diagram](er_diagram.svg)
+
+| Symbol | Meaning |
+|--------|---------|
+| 🟧 Rectangle (orange border) | Core entity (Sites, Users) |
+| 🟥 Rectangle (red border) | Admin-only entity (Payroll, Budgets) |
+| 🟩 Rectangle (green border) | Operational entity (Attendance, Materials) |
+| ◇ Diamond | Relationship between entities |
+| ○ Oval | Attribute of an entity |
+| `1 — M` | One-to-many cardinality |
+| Dashed line | Cross-module foreign key reference |
+
+**Key relationships at a glance:**
+
+- `SITES` is the central hub — every operational table has a `site_id` FK
+- `WORKERS` → `ATTENDANCE_RECORDS` → `PAYROLL_LINE_ITEMS` is the attendance-to-payroll chain
+- `MATERIAL_RECEIPTS` and `MATERIAL_CONSUMPTION` are both connected to `SITES` + `MATERIALS`
+- `PAYROLL_RUNS`, `SITE_BUDGETS`, `WORKER_ADVANCES` are admin-only (red border)
+- `AUDIT_LOGS` is a cross-cutting system table — not shown with a parent entity
 
 ---
 
