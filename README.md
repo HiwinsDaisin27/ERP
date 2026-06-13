@@ -109,7 +109,7 @@ The Construction ERP system requires a centralized PostgreSQL database to manage
 
 Classic Chen notation — rectangles are entities, diamonds are relationships, ovals are attributes.
 
-![ER Diagram](er_diagram.svg)
+![ER Diagram](files/er_diagram.svg)
 
 | Symbol | Meaning |
 |--------|---------|
