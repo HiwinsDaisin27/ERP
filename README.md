@@ -131,8 +131,22 @@ Classic Chen notation — rectangles are entities, diamonds are relationships, o
 
 ---
 
-## Database Schema Design
+## Database Schema
 
+### Module Overview
+
+| Module | Tables | Access |
+|--------|--------|--------|
+| Core | `sites`, `users`, `site_user_assignments` | All roles |
+| Workforce | `workers`, `skill_categories`, `site_worker_allocations` | Supervisor (Telegram), Manager (Web) |
+| Attendance | `attendance_records` | Supervisor (Telegram) |
+| Inventory | `materials`, `suppliers`, `material_receipts`, `material_consumption` | Supervisor (Telegram) |
+| Expenses & Budget | `expense_categories`, `site_expenses`, `site_budgets` | Supervisor (ops), Admin (budgets) |
+| Progress | `site_milestones`, `site_progress_logs` | Supervisor (Telegram) |
+| Payroll | `payroll_runs`, `payroll_line_items`, `worker_advances` | ⚠ Admin only |
+| Audit | `audit_logs` | System only |
+
+### Schema Design
 
 > Rendered natively by GitHub via Mermaid. No plugins needed.
 
