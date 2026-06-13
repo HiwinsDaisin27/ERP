@@ -827,3 +827,29 @@ This route returns `403 Forbidden` for supervisor and manager roles. The sidebar
 | `/payroll` | ❌ | ❌ | ✅ |
 
 Authentication is JWT-based. Token is issued on login, stored in `httpOnly` cookie, and verified on every API request. Route-level guards on the frontend redirect unauthorized access back to `/login`.
+
+## Design Review
+
+### What Was Built
+
+| Screen | Route | Status |
+|--------|-------|--------|
+| Login | `/login` | ✅ Complete |
+| Operations Dashboard | `/` | ✅ Complete |
+| Payroll Workbook | `/payroll` | ✅ Complete |
+| Intelligence Assistant | `/assistant` | 🔄 UI shell done, AI wiring pending |
+| Site Detail | `/sites/:id` | 🔄 Layout done, charts pending |
+
+---
+
+### Key Technical Decisions
+
+- **Vite + React 18** — fast HMR, small bundles
+- **TanStack Query** — all server state, no manual `useEffect` fetching
+- **Zustand** — two stores only: `authStore` and `uiStore`
+- **JWT in httpOnly cookie** — never in localStorage, not exposed to XSS
+- **Role guards at router level** — `<ProtectedRoute>` wraps every authenticated route
+- **No UI library** — custom Tailwind components, no override battles with MUI/Chakra
+- **Single Axios instance** — base URL from `VITE_API_BASE_URL`, no hardcoded endpoints
+
+---
