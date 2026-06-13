@@ -873,8 +873,8 @@ Authentication is JWT-based. Token is issued on login, stored in `httpOnly` cook
 | Login | `/login` | ✅ Complete |
 | Operations Dashboard | `/` | ✅ Complete |
 | Payroll Workbook | `/payroll` | ✅ Complete |
-| Intelligence Assistant | `/assistant` | 🔄 UI shell done, AI wiring pending |
-| Site Detail | `/sites/:id` | 🔄 Layout done, charts pending |
+| Intelligence Assistant | `/assistant` | ✅ Complete |
+| Site Trends And Analysis  | `/sites/:id` | ✅ Complete |
 
 ---
 
