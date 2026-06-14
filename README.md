@@ -864,6 +864,8 @@ This route returns `403 Forbidden` for supervisor and manager roles. The sidebar
 
 Authentication is JWT-based. Token is issued on login, stored in `httpOnly` cookie, and verified on every API request. Route-level guards on the frontend redirect unauthorized access back to `/login`.
 
+---
+
 ## Design Review
 
 ### What Was Built
@@ -875,8 +877,6 @@ Authentication is JWT-based. Token is issued on login, stored in `httpOnly` cook
 | Payroll Workbook | `/payroll` | ✅ Complete |
 | Intelligence Assistant | `/assistant` | ✅ Complete |
 | Site Trends And Analysis  | `/sites/:id` | ✅ Complete |
-
----
 
 ### Key Technical Decisions
 
