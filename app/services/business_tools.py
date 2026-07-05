@@ -100,6 +100,20 @@ class BusinessTools:
     def __init__(self, db: Session) -> None:
         self.db = db
 
+    def build_entity_context(self) -> str:
+        sites = self.db.scalars(select(Site.site_name).order_by(Site.site_name)).all()
+        workers = self.db.scalars(select(Employee.full_name).order_by(Employee.full_name)).all()
+        materials = self.db.scalars(select(Material.material_name).order_by(Material.material_name)).all()
+
+        lines: list[str] = []
+        if sites:
+            lines.append("Sites: " + ", ".join(sites))
+        if workers:
+            lines.append("Workers: " + ", ".join(workers))
+        if materials:
+            lines.append("Materials: " + ", ".join(materials))
+        return "\n".join(lines) if lines else "No sites, workers, or materials registered yet."
+
     def call_tool(self, tool_name: str, arguments: dict) -> dict:
         allowed_tools = {
             "mark_attendance": self.mark_attendance,

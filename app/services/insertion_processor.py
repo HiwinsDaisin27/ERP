@@ -14,8 +14,12 @@ class InsertionProcessor:
         self.tools = BusinessTools(db)
 
     async def extract_submission(self, submission: TelegramDataSubmission) -> TelegramDataSubmission:
+        entity_context = self.tools.build_entity_context()
         try:
-            tool_name, arguments = await self.llm.extract_tool_call(submission.raw_text)
+            tool_name, arguments = await self.llm.extract_tool_call(
+                submission.raw_text,
+                entity_context=entity_context,
+            )
         except Exception as exc:
             submission.status = "LLM_FAILED"
             submission.error = str(exc)
@@ -87,14 +91,15 @@ def confirmation_keyboard(submission_id: int) -> dict:
 
 
 def format_extraction_summary(submission: TelegramDataSubmission) -> str:
+    payload = submission.extracted_payload or {}
+    detail_lines = [f"  {key}: {value}" for key, value in payload.items()]
     return "\n".join(
         [
-            f"Submission #{submission.id} extracted.",
-            f"Tool: {submission.tool_name}",
-            "Payload:",
-            str(submission.extracted_payload),
+            f"I read submission #{submission.id} as:",
+            f"Action: {submission.tool_name}",
+            *detail_lines,
             "",
-            "Confirm only if this looks correct.",
+            "Tap Confirm Write only if this is correct.",
         ]
     )
 

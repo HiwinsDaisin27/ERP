@@ -1,6 +1,7 @@
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
+from app.core.config import settings
 from app.models.telegram import TelegramMessage, TelegramUser
 from app.services.insertion_processor import (
     InsertionProcessor,
@@ -15,6 +16,9 @@ from app.services.telegram_keyboards import (
 )
 from app.services.telegram_intake import TelegramIntakeService
 from app.services.workflow_engine import WorkflowEngine
+
+KNOWN_COMMANDS = {"/start", "/report", "/sites", "/workers", "/examples", "/help", "/cancel"}
+PAYROLL_HINTS = ("payroll", "salary", " wage", " wages", "payment approved", "mark paid", "pay worker")
 
 
 class TelegramUpdateHandler:
@@ -39,6 +43,9 @@ class TelegramUpdateHandler:
         chat = message.get("chat", {})
         from_user = message.get("from", {})
         chat_id = chat["id"]
+        if not self._is_allowed_user(from_user):
+            await self.telegram.send_message(chat_id, "This bot is restricted to approved site supervisors.")
+            return
         text = message.get("text", "")
 
         self._upsert_user(from_user, chat_id)
@@ -63,6 +70,24 @@ class TelegramUpdateHandler:
             await self.telegram.send_message(chat_id, intake_examples_text())
         elif command == "/help":
             await self.telegram.send_message(chat_id, self._help_text())
+        elif command == "/cancel":
+            self.workflow_engine.cancel_active(chat_id)
+            self.db.commit()
+            await self.telegram.send_message(chat_id, "Cancelled. Send a new site update anytime.", main_menu_keyboard())
+        elif text.strip().startswith("/"):
+            await self.telegram.send_message(
+                chat_id,
+                "Unknown command. Use /help for available commands, or send a plain-text site update.",
+                main_menu_keyboard(),
+            )
+        elif not text.strip():
+            await self.telegram.send_message(chat_id, "Send a site update as plain text.", main_menu_keyboard())
+        elif self._looks_like_payroll_request(text):
+            await self.telegram.send_message(
+                chat_id,
+                "Payroll and payment operations are handled only in the secure website payroll section.",
+                main_menu_keyboard(),
+            )
         else:
             submission = self.intake.create_pending_submission(chat_id, from_user.get("id"), text)
             submission = await self.insertion_processor.extract_submission(submission)
@@ -76,9 +101,25 @@ class TelegramUpdateHandler:
 
             await self.telegram.send_message(
                 chat_id,
-                f"Saved as data submission #{submission.id}, but extraction failed: {submission.error}",
+                self._llm_failure_message(submission),
                 main_menu_keyboard(),
             )
+
+    def _looks_like_payroll_request(self, text: str) -> bool:
+        lowered = text.lower()
+        return any(hint in lowered for hint in PAYROLL_HINTS)
+
+    def _llm_failure_message(self, submission) -> str:
+        error = submission.error or "Unknown extraction error."
+        if "LLM_INSERTION_API_KEY" in error:
+            return "LLM is not configured on the server. Ask the admin to set LLM_INSERTION_API_KEY in .env."
+        if "429" in error or "rate-limited" in error.lower() or "All insertion models failed" in error:
+            return (
+                f"Submission #{submission.id} was saved, but the AI service is busy right now.\n"
+                f"Details: {error}\n\n"
+                "Try again in a minute. The admin can also set LLM_INSERTION_MODEL=openrouter/free in .env."
+            )
+        return f"Submission #{submission.id} was saved, but extraction failed:\n{error}"
 
     async def _handle_callback(self, update_id: int, callback_query: dict, payload: dict) -> None:
         from_user = callback_query.get("from", {})
@@ -87,6 +128,9 @@ class TelegramUpdateHandler:
         data = callback_query.get("data", "")
 
         if chat_id is None:
+            return
+        if not self._is_allowed_user(from_user):
+            await self.telegram.send_message(chat_id, "This bot is restricted to approved site supervisors.")
             return
 
         self._upsert_user(from_user, chat_id)
@@ -147,6 +191,19 @@ class TelegramUpdateHandler:
                 f"Submission #{submission.id} rejected. Nothing was written.",
                 main_menu_keyboard(),
             )
+        else:
+            await self.telegram.send_message(
+                chat_id,
+                "That action is only available from the secure website.",
+                main_menu_keyboard(),
+            )
+
+    def _is_allowed_user(self, from_user: dict) -> bool:
+        allowed_ids = settings.telegram_allowed_user_ids_set
+        if not allowed_ids:
+            return True
+        telegram_user_id = from_user.get("id")
+        return telegram_user_id in allowed_ids
 
     def _upsert_user(self, from_user: dict, chat_id: int) -> None:
         telegram_user_id = from_user.get("id")

@@ -28,31 +28,6 @@ def intake_examples_text() -> str:
     )
 
 
-def hr_menu_keyboard() -> dict:
-    return {
-        "inline_keyboard": [
-            [{"text": "Add Worker", "callback_data": "hr:add_worker"}],
-            [{"text": "Mark Attendance", "callback_data": "hr:attendance"}],
-            [{"text": "Assign Workers", "callback_data": "hr:assign_workers"}],
-            [{"text": "Back", "callback_data": "menu:main"}],
-        ]
-    }
-
-
-def site_menu_keyboard() -> dict:
-    return {
-        "inline_keyboard": [
-            [{"text": "Add Site", "callback_data": "site:add_site"}],
-            [{"text": "Add Material", "callback_data": "site:add_material"}],
-            [{"text": "Receive Material", "callback_data": "site:receive_material"}],
-            [{"text": "Consume Material", "callback_data": "site:consume_material"}],
-            [{"text": "Add Expense", "callback_data": "site:add_expense"}],
-            [{"text": "Progress Update", "callback_data": "site:progress_update"}],
-            [{"text": "Back", "callback_data": "menu:main"}],
-        ]
-    }
-
-
 def reports_menu_keyboard() -> dict:
     return {
         "inline_keyboard": [

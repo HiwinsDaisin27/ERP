@@ -1,0 +1,50 @@
+services:
+  - type: web
+    name: thesecond-api
+    runtime: docker
+    plan: free
+    dockerfilePath: ./Dockerfile
+    healthCheckPath: /health
+    envVars:
+      - key: DATABASE_URL
+        sync: false
+      - key: TELEGRAM_BOT_TOKEN
+        sync: false
+      - key: TELEGRAM_ADMIN_CHAT_ID
+        sync: false
+      - key: TELEGRAM_WEBHOOK_SECRET
+        sync: false
+      - key: TELEGRAM_ALLOWED_USER_IDS
+        sync: false
+      - key: PUBLIC_WEBHOOK_BASE_URL
+        sync: false
+      - key: APP_NAME
+        value: TheSecond Backend
+      - key: ENVIRONMENT
+        value: production
+      - key: JWT_SECRET
+        sync: false
+      - key: APP_BASE_URL
+        sync: false
+      - key: FRONTEND_ORIGINS
+        sync: false
+      - key: LLM_INSERTION_PROVIDER
+        value: openrouter
+      - key: LLM_INSERTION_API_KEY
+        sync: false
+      - key: LLM_INSERTION_MODEL
+        value: openrouter/free
+      - key: LLM_INSERTION_FALLBACK_MODELS
+        value: google/gemini-2.5-flash-lite
+      - key: GROQ_API_KEY
+        sync: false
+      - key: LLM_RETRIEVAL_PROVIDER
+        value: openrouter
+      - key: LLM_RETRIEVAL_API_KEY
+        sync: false
+      - key: LLM_RETRIEVAL_MODEL
+        value: openrouter/free
+      - key: LLM_RETRIEVAL_FALLBACK_MODELS
+        value: google/gemini-2.5-flash-lite
+      - key: REPORT_EXPORT_DIR
+        value: data/exports

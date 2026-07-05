@@ -32,23 +32,6 @@ class WorkflowField:
 
 
 WORKFLOWS: dict[str, list[WorkflowField]] = {
-    "add_site": [
-        WorkflowField("site_name", "Site name?"),
-        WorkflowField("location", "Location?"),
-        WorkflowField("supervisor_name", "Supervisor name?", optional=True),
-        WorkflowField("project_start_date", "Start date? Use YYYY-MM-DD, or type today.", "date", optional=True),
-        WorkflowField("expected_end_date", "Expected end date? Use YYYY-MM-DD, or type skip.", "date", optional=True),
-        WorkflowField("project_budget", "Project budget? Use a number, or type skip.", "decimal", optional=True),
-    ],
-    "add_worker": [
-        WorkflowField("full_name", "Worker full name?"),
-        WorkflowField("phone_number", "Phone number?", optional=True),
-        WorkflowField("role", "Role? Example: Mason, Helper, Electrician.", optional=True),
-        WorkflowField("wage_type", "Wage type? Type daily, weekly, or skip.", optional=True),
-        WorkflowField("daily_rate", "Daily rate? Use a number, or type skip.", "decimal", optional=True),
-        WorkflowField("weekly_rate", "Weekly rate? Use a number, or type skip.", "decimal", optional=True),
-        WorkflowField("joining_date", "Joining date? Use YYYY-MM-DD, today, or skip.", "date", optional=True),
-    ],
     "add_material": [
         WorkflowField("material_name", "Material name? Example: Cement."),
         WorkflowField("unit", "Unit? Example: bags, kg, tons, pieces."),
@@ -101,10 +84,8 @@ WORKFLOWS: dict[str, list[WorkflowField]] = {
 
 
 CALLBACK_TO_WORKFLOW = {
-    "hr:add_worker": "add_worker",
     "hr:attendance": "mark_attendance",
     "hr:assign_workers": "assign_workers",
-    "site:add_site": "add_site",
     "site:add_material": "add_material",
     "site:receive_material": "receive_material",
     "site:consume_material": "consume_material",
@@ -252,33 +233,6 @@ class WorkflowEngine:
         )
 
     def _commit_workflow(self, workflow_name: str, data: dict) -> str:
-        if workflow_name == "add_site":
-            site = Site(
-                site_name=data["site_name"],
-                location=data.get("location"),
-                supervisor_name=data.get("supervisor_name"),
-                project_start_date=self._as_date(data.get("project_start_date")),
-                expected_end_date=self._as_date(data.get("expected_end_date")),
-                project_budget=self._as_decimal(data.get("project_budget")),
-            )
-            self.db.add(site)
-            self.db.flush()
-            return f"Site added: {site.site_name} (ID {site.site_id})."
-
-        if workflow_name == "add_worker":
-            worker = Employee(
-                full_name=data["full_name"],
-                phone_number=data.get("phone_number"),
-                role=data.get("role"),
-                wage_type=(data.get("wage_type") or "").upper() or None,
-                daily_rate=self._as_decimal(data.get("daily_rate")),
-                weekly_rate=self._as_decimal(data.get("weekly_rate")),
-                joining_date=self._as_date(data.get("joining_date")),
-            )
-            self.db.add(worker)
-            self.db.flush()
-            return f"Worker added: {worker.full_name} (ID {worker.employee_id})."
-
         if workflow_name == "add_material":
             self._require_site(data["site_id"])
             material = self._get_or_create_material(data["material_name"], data["unit"])

@@ -56,6 +56,7 @@ class Employee(Base):
     daily_rate: Mapped[Decimal | None] = mapped_column(Numeric(12, 2))
     weekly_rate: Mapped[Decimal | None] = mapped_column(Numeric(12, 2))
     joining_date: Mapped[date | None] = mapped_column(Date)
+    image_url: Mapped[str | None] = mapped_column(String(500))
     status: Mapped[str] = mapped_column(String(30), default="ACTIVE")
     created_at: Mapped[datetime] = mapped_column(DateTime(timezone=True), server_default=func.now())
 
@@ -152,4 +153,3 @@ class ProgressUpdate(Base):
     update_date: Mapped[date] = mapped_column(Date, nullable=False, index=True)
     work_completed: Mapped[str] = mapped_column(Text, nullable=False)
     remarks: Mapped[str | None] = mapped_column(Text)
-
