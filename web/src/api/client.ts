@@ -170,7 +170,15 @@ async function request<T>(path: string, token: string | null, init?: RequestInit
   };
   if (token) headers.Authorization = `Bearer ${token}`;
 
-  const response = await fetch(`${API_BASE}${path}`, { ...init, headers });
+  let response: Response;
+  const url = `${API_BASE}${path}`;
+  try {
+    response = await fetch(url, { ...init, headers });
+  } catch (err) {
+    throw new Error(
+      `Could not reach backend API at ${url}. Check that Render is awake and DATABASE_URL/CORS are configured.`,
+    );
+  }
   if (!response.ok) {
     const body = await response.text();
     let message = body || `Request failed (${response.status})`;

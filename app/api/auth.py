@@ -1,4 +1,5 @@
 from fastapi import APIRouter, Depends, HTTPException, status
+from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import Session
 
 from app.api.deps import get_current_user, require_roles
@@ -14,6 +15,11 @@ router = APIRouter(prefix="/auth", tags=["auth"])
 def login(payload: LoginRequest, db: Session = Depends(get_db)) -> TokenResponse:
     try:
         return AuthService(db).login(payload.email, payload.password)
+    except SQLAlchemyError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Database connection failed. Check DATABASE_URL on the backend host.",
+        ) from exc
     except ValueError as exc:
         raise HTTPException(status_code=status.HTTP_401_UNAUTHORIZED, detail=str(exc)) from exc
 
@@ -22,6 +28,11 @@ def login(payload: LoginRequest, db: Session = Depends(get_db)) -> TokenResponse
 def bootstrap_admin(payload: BootstrapAdminRequest, db: Session = Depends(get_db)) -> UserResponse:
     try:
         return AuthService(db).bootstrap_admin(payload.email, payload.password, payload.full_name)
+    except SQLAlchemyError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Database connection failed. Check DATABASE_URL on the backend host.",
+        ) from exc
     except ValueError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
 
@@ -45,5 +56,10 @@ def create_user(
 ) -> UserResponse:
     try:
         return AuthService(db).create_user(payload)
+    except SQLAlchemyError as exc:
+        raise HTTPException(
+            status_code=status.HTTP_503_SERVICE_UNAVAILABLE,
+            detail="Database connection failed. Check DATABASE_URL on the backend host.",
+        ) from exc
     except ValueError as exc:
         raise HTTPException(status_code=status.HTTP_400_BAD_REQUEST, detail=str(exc)) from exc
