@@ -38,18 +38,20 @@ export function LoginPage() {
           Sign in with your website admin account. This is separate from Telegram — field staff use the bot,
           you use this console for dashboard and payroll.
         </p>
-        <div className="login-help">
-          <strong>Your admin login</strong>
-          <p>
-            Email: <code>admin@example.com</code>
-            <br />
-            Password: <code>admin12345</code>
-          </p>
-          <small>
-            To set your own email/password later, run in terminal:
-            <code>python -m app.db.manage_admin --email you@email.com --password YourPassword123</code>
-          </small>
-        </div>
+        {import.meta.env.DEV && (
+          <div className="login-help">
+            <strong>Local admin login</strong>
+            <p>
+              Email: <code>admin@example.com</code>
+              <br />
+              Password: <code>admin12345</code>
+            </p>
+            <small>
+              To set your own email/password later, run in terminal:
+              <code>python -m app.db.manage_admin --email you@email.com --password YourPassword123</code>
+            </small>
+          </div>
+        )}
         <label>
           Email
           <input
